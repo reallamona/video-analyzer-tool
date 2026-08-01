@@ -10,5 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeNotes();
     initializeScreenshots();
     initializeFrames();
+    initializeURLImport();
 
 });
