@@ -9,9 +9,13 @@ let nextFrameBtn;
 
 let back5Btn;
 let back10Btn;
+let back30Btn;
+let back1mBtn;
 
 let forward5Btn;
 let forward10Btn;
+let forward30Btn;
+let forward1mBtn;
 
 let frameNumberText;
 
