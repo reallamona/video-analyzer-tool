@@ -70,12 +70,12 @@ function initializeFrames() {
 
 
 
-    frameNumberText =
-    document.getElementById("frameNumber");
-   
-    
-   fpsDisplay =
+    fpsDisplay =
     document.getElementById("fps");
+
+
+   fpsSelect =
+    document.getElementById("fpsSelect");
 
 
 
