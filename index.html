@@ -2,103 +2,247 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Video Analyzer</title>
 
     <link rel="stylesheet" href="css/style.css">
+
 </head>
+
 
 <body>
 
-    <header>
-        <h1>Video Analyzer</h1>
-    </header>
 
-    <main class="container">
+<header>
 
-        <!-- Left Side -->
-        <section class="viewer">
+    <h1>Video Analyzer</h1>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <!-- =========================
+         Video Workspace
+    ========================== -->
+
+    <section class="viewer">
+
+
+        <!-- Video Upload -->
+
+        <div class="upload-section">
 
             <input
                 type="file"
                 id="videoUpload"
                 accept="video/*">
 
+        </div>
+
+
+
+        <!-- Video Player -->
+
+        <div class="video-container">
+
             <video
                 id="video"
                 controls>
             </video>
 
-            <div class="video-info">
+        </div>
 
-                <p>
-                    <strong>Current Time:</strong>
-                    <span id="currentTime">00:00</span>
-                </p>
 
-                <p>
-                    <strong>Duration:</strong>
-                    <span id="duration">00:00</span>
-                </p>
 
-                <button id="captureBtn">
-                    Capture Screenshot
+        <!-- Frame Controls -->
+
+        <section class="frame-panel">
+
+
+            <h2>Frame Controls</h2>
+
+
+            <div class="frame-controls">
+
+
+                <button id="back10">
+                    -10 Frames
                 </button>
+
+
+                <button id="back5">
+                    -5 Frames
+                </button>
+
+
+                <button id="previousFrame">
+                    -1 Frame
+                </button>
+
+
+                <button id="nextFrame">
+                    +1 Frame
+                </button>
+
+
+                <button id="forward5">
+                    +5 Frames
+                </button>
+
+
+                <button id="forward10">
+                    +10 Frames
+                </button>
+
 
             </div>
 
+
+
+            <div class="frame-info">
+
+
+                <p>
+                    <strong>Frame:</strong>
+                    <span id="frameNumber">0</span>
+                </p>
+
+
+                <p>
+                    <strong>FPS:</strong>
+                    <span id="fps">60</span>
+                </p>
+
+
+            </div>
+
+
         </section>
 
-        <!-- Right Side -->
-        <aside class="sidebar">
 
-            <!-- Notes -->
-            <section class="panel">
 
-                <h2>Notes</h2>
 
-                <textarea
-                    id="noteInput"
-                    placeholder="Write a note..."></textarea>
+        <!-- Video Information -->
 
-                <button id="addNoteBtn">
-                    Add Note
-                </button>
+        <section class="video-info">
 
-                <ul id="notesList"></ul>
 
-            </section>
+            <p>
+                <strong>Current Time:</strong>
+                <span id="currentTime">00:00</span>
+            </p>
 
-            <!-- Screenshots -->
-            <section class="panel">
 
-                <h2>Screenshots</h2>
+            <p>
+                <strong>Duration:</strong>
+                <span id="duration">00:00</span>
+            </p>
 
-                <div id="screenshots"></div>
 
-            </section>
 
-        </aside>
+            <button id="captureBtn">
+                Capture Screenshot
+            </button>
 
-    </main>
 
-    <!-- Hidden canvas used for screenshots -->
-    <canvas
-        id="canvas"
-        hidden>
-    </canvas>
+        </section>
 
-    
-    <script src="js/player.js"></script>
-    
-    <script src="js/notes.js"></script>
-    
-    <script src="js/screenshots.js"></script>
-    
-    <script src="js/frames.js"></script>
-    
-    <script src="js/app.js"></script>
+
+
+    </section>
+
+
+
+
+
+    <!-- =========================
+         Tools Sidebar
+    ========================== -->
+
+    <aside class="sidebar">
+
+
+
+        <!-- Notes -->
+
+        <section class="panel">
+
+
+            <h2>Notes</h2>
+
+
+            <textarea
+                id="noteInput"
+                placeholder="Write a note...">
+            </textarea>
+
+
+            <button id="addNoteBtn">
+                Add Note
+            </button>
+
+
+            <ul id="notesList"></ul>
+
+
+        </section>
+
+
+
+
+
+        <!-- Screenshots -->
+
+        <section class="panel">
+
+
+            <h2>Screenshots</h2>
+
+
+            <div id="screenshots"></div>
+
+
+        </section>
+
+
+
+    </aside>
+
+
+
+</main>
+
+
+
+
+
+<!-- Screenshot Canvas -->
+
+<canvas
+    id="canvas"
+    hidden>
+</canvas>
+
+
+
+
+
+<!-- JavaScript Modules -->
+
+<script src="js/player.js"></script>
+<script src="js/notes.js"></script>
+<script src="js/screenshots.js"></script>
+<script src="js/frames.js"></script>
+<script src="js/app.js"></script>
+
+
 
 </body>
+
 </html>
