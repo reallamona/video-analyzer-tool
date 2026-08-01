@@ -127,6 +127,10 @@ function youtubeReady(event) {
     );
 
 
+    updateYouTubeDuration();
+
+
+
     setInterval(
         updateYouTubeTime,
         100
@@ -157,6 +161,31 @@ function updateYouTubeTime() {
         "currentTime"
     ).textContent =
         formatTime(currentTime);
+
+}
+
+
+
+/* =========================
+   YouTube Duration Update
+========================= */
+
+function updateYouTubeDuration() {
+
+
+    if (!player) return;
+
+
+
+    const duration =
+        player.getDuration();
+
+
+
+    document.getElementById(
+        "duration"
+    ).textContent =
+        formatTime(duration);
 
 }
 
