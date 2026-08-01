@@ -1,1 +1,221 @@
+/* =========================
+   Reset
+========================= */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   Body
+========================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #1b1b1b;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* =========================
+   Header
+========================= */
+
+header {
+    background: #252525;
+    border-bottom: 1px solid #3a3a3a;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 28px;
+}
+
+/* =========================
+   Layout
+========================= */
+
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* =========================
+   Video Viewer
+========================= */
+
+.viewer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#videoUpload {
+    padding: 10px;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: white;
+}
+
+#video {
+    width: 100%;
+    background: black;
+    border: 1px solid #444;
+    border-radius: 8px;
+}
+
+/* =========================
+   Video Information
+========================= */
+
+.video-info {
+    background: #252525;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.video-info p {
+    font-size: 15px;
+}
+
+/* =========================
+   Sidebar
+========================= */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* =========================
+   Panels
+========================= */
+
+.panel {
+    background: #252525;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.panel h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+/* =========================
+   Notes
+========================= */
+
+#noteInput {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+
+    background: #1f1f1f;
+    color: white;
+
+    border: 1px solid #444;
+    border-radius: 6px;
+
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#notesList {
+    list-style: none;
+    margin-top: 15px;
+}
+
+#notesList li {
+    background: #303030;
+    border: 1px solid #444;
+    border-radius: 6px;
+
+    padding: 10px;
+    margin-bottom: 10px;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#notesList li:hover {
+    background: #3a3a3a;
+}
+
+/* =========================
+   Screenshots
+========================= */
+
+#screenshots {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#screenshots img {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #444;
+}
+
+#screenshots a {
+    color: #7cbcff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#screenshots a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   Buttons
+========================= */
+
+button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+
+    background: #3b82f6;
+    color: white;
+
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #2563eb;
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 900px) {
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        order: 2;
+    }
+
+    .viewer {
+        order: 1;
+    }
+
+}
