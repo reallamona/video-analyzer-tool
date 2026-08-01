@@ -69,15 +69,17 @@ function initializeFrames() {
         document.getElementById("forward1m");
 
 
+    frameNumberText =
+    document.getElementById("frameNumber");
 
-    fpsDisplay =
+
+   fpsDisplay =
     document.getElementById("fps");
 
 
    fpsSelect =
     document.getElementById("fpsSelect");
-
-
+   
 
     nextFrameBtn.addEventListener(
         "click",
