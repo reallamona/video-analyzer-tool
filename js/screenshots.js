@@ -142,55 +142,48 @@ function renderScreenshots() {
         (shot, index) => {
 
 
-
         const container =
             document.createElement("div");
 
 
-        container.className =
-            "screenshot-item";
+
+        const img =
+            document.createElement("img");
+
+
+        img.src =
+            shot.image;
 
 
 
-        container.innerHTML = `
-
-            <img src="${shot.image}">
-
-
-            <div class="item-header">
+        const header =
+            document.createElement("div");
 
 
-                <p>
-                    ${formatTime(shot.time)}
-                </p>
+        header.className =
+            "item-header";
 
 
 
-                <button class="delete-btn">
-                    Delete
-                </button>
+        const label =
+            document.createElement("strong");
 
 
-            </div>
-
-
-
-            <a
-                href="${shot.image}"
-                download="frame-${Math.floor(shot.time)}.png">
-
-                Download Screenshot
-
-            </a>
-
-        `;
+        label.textContent =
+            formatTime(shot.time);
 
 
 
         const deleteBtn =
-            container.querySelector(
-                ".delete-btn"
-            );
+            document.createElement("button");
+
+
+        deleteBtn.textContent =
+            "Delete";
+
+
+        deleteBtn.className =
+            "delete-btn";
 
 
 
@@ -203,14 +196,47 @@ function renderScreenshots() {
             );
 
 
-
             saveScreenshots();
-
 
             renderScreenshots();
 
 
         };
+
+
+
+        header.appendChild(label);
+
+        header.appendChild(deleteBtn);
+
+
+
+
+        const download =
+            document.createElement("a");
+
+
+
+        download.href =
+            shot.image;
+
+
+
+        download.download =
+            `frame-${Math.floor(shot.time)}.png`;
+
+
+
+        download.textContent =
+            "Download Screenshot";
+
+
+
+        container.appendChild(img);
+
+        container.appendChild(header);
+
+        container.appendChild(download);
 
 
 
