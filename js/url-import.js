@@ -121,9 +121,42 @@ function loadYouTube(url) {
 
 function youtubeReady(event) {
 
+
     console.log(
         "YouTube Player Ready"
     );
+
+
+    setInterval(
+        updateYouTubeTime,
+        100
+    );
+
+
+}
+
+
+
+/* =========================
+   YouTube Time Update
+========================= */
+
+function updateYouTubeTime() {
+
+
+    if (!player) return;
+
+
+
+    const currentTime =
+        player.getCurrentTime();
+
+
+
+    document.getElementById(
+        "currentTime"
+    ).textContent =
+        formatTime(currentTime);
 
 }
 
