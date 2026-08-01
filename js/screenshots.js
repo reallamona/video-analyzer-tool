@@ -4,6 +4,7 @@
 
 let canvas;
 let ctx;
+
 let captureBtn;
 let screenshots;
 
@@ -11,15 +12,26 @@ let savedScreenshots = [];
 
 
 
+/* =========================
+   Initialize
+========================= */
+
 function initializeScreenshots() {
 
 
-    canvas = document.getElementById("canvas");
+    canvas =
+        document.getElementById("canvas");
 
-    ctx = canvas.getContext("2d");
+
+    ctx =
+        canvas.getContext("2d");
 
 
-    captureBtn = document.getElementById("captureBtn");
+
+    captureBtn =
+        document.getElementById("captureBtn");
+
+
 
     screenshots =
         document.getElementById("screenshots");
@@ -37,6 +49,7 @@ function initializeScreenshots() {
         "click",
         captureFrame
     );
+
 
 
     renderScreenshots();
@@ -129,54 +142,55 @@ function renderScreenshots() {
         (shot, index) => {
 
 
+
         const container =
             document.createElement("div");
 
 
-
-        const img =
-            document.createElement("img");
-
-
-        img.src =
-            shot.image;
+        container.className =
+            "screenshot-item";
 
 
 
-        const label =
-            document.createElement("p");
+        container.innerHTML = `
+
+            <img src="${shot.image}">
 
 
-        label.textContent =
-            formatTime(shot.time);
+            <div class="item-header">
+
+
+                <p>
+                    ${formatTime(shot.time)}
+                </p>
 
 
 
-        const download =
-            document.createElement("a");
+                <button class="delete-btn">
+                    Delete
+                </button>
+
+
+            </div>
 
 
 
-        download.href =
-            shot.image;
+            <a
+                href="${shot.image}"
+                download="frame-${Math.floor(shot.time)}.png">
 
+                Download Screenshot
 
-        download.download =
-            `frame-${Math.floor(shot.time)}.png`;
+            </a>
 
-
-        download.textContent =
-            "Download Screenshot";
+        `;
 
 
 
         const deleteBtn =
-            document.createElement("button");
-
-
-
-        deleteBtn.textContent =
-            "Delete";
+            container.querySelector(
+                ".delete-btn"
+            );
 
 
 
@@ -189,6 +203,7 @@ function renderScreenshots() {
             );
 
 
+
             saveScreenshots();
 
 
@@ -196,16 +211,6 @@ function renderScreenshots() {
 
 
         };
-
-
-
-        container.appendChild(img);
-
-        container.appendChild(label);
-
-        container.appendChild(download);
-
-        container.appendChild(deleteBtn);
 
 
 
