@@ -2,6 +2,7 @@
    URL Import
 ========================= */
 
+let player;
 let videoURL;
 let loadURLBtn;
 
