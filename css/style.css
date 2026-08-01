@@ -15,9 +15,9 @@
 
 :root {
 
-    --background: #111111;
-    --surface: #1b1b1b;
-    --panel: #222222;
+    --background: #101010;
+    --surface: #181818;
+    --panel: #202020;
     --border: #333333;
 
     --text: #eeeeee;
@@ -27,6 +27,7 @@
     --accent-hover: #3b72d9;
 
 }
+
 
 
 /* =========================
@@ -42,11 +43,13 @@ body {
         sans-serif;
 
     background: var(--background);
+
     color: var(--text);
 
     min-height: 100vh;
 
 }
+
 
 
 /* =========================
@@ -58,16 +61,12 @@ header {
     height: 70px;
 
     display: flex;
+
     align-items: center;
 
     padding: 0 30px;
 
-    background:
-        linear-gradient(
-            180deg,
-            #202020,
-            #181818
-        );
+    background: var(--surface);
 
     border-bottom:
         1px solid var(--border);
@@ -84,8 +83,9 @@ header h1 {
 }
 
 
+
 /* =========================
-   Main Layout
+   Layout
 ========================= */
 
 .container {
@@ -93,8 +93,8 @@ header h1 {
     display: grid;
 
     grid-template-columns:
-        minmax(500px, 2fr)
-        380px;
+        minmax(600px, 1fr)
+        360px;
 
     gap: 20px;
 
@@ -103,8 +103,9 @@ header h1 {
 }
 
 
+
 /* =========================
-   Viewer
+   Video Workspace
 ========================= */
 
 .viewer {
@@ -113,124 +114,176 @@ header h1 {
 
     flex-direction: column;
 
-    gap: 15px;
+    gap: 18px;
 
 }
 
 
-#videoUpload {
 
-    width: fit-content;
+.upload-section {
+
+    display: flex;
+
+}
+
+
+
+#videoUpload {
 
     padding: 10px;
 
-    background: var(--panel);
+    background:
+        var(--panel);
 
-    color: var(--text);
+    color:
+        var(--text);
 
     border:
         1px solid var(--border);
 
     border-radius: 8px;
 
-    cursor: pointer;
+}
+
+
+
+.video-container {
+
+    background: black;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 12px;
+
+    overflow: hidden;
 
 }
 
 
+
 #video {
+
+    display: block;
 
     width: 100%;
 
     max-height: 650px;
 
-    background: black;
+}
+
+
+
+/* =========================
+   Frame Panel
+========================= */
+
+.frame-panel {
+
+    background:
+        var(--panel);
+
+    border:
+        1px solid var(--border);
 
     border-radius: 12px;
 
-    border:
-        1px solid var(--border);
+    padding: 18px;
 
 }
 
 
-/* =========================
-   Video Info
-========================= */
 
-.video-info {
+.frame-panel h2 {
 
-    display: flex;
+    font-size: 18px;
 
-    flex-direction: row;
-
-    align-items: center;
-
-    gap: 30px;
-
-    padding: 15px 20px;
-
-    background: var(--panel);
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 10px;
+    margin-bottom: 15px;
 
 }
 
 
-.video-info p {
-
-    color: var(--muted);
-
-}
-
-
-.video-info strong {
-
-    color: var(--text);
-
-}
-
-
-/* =========================
-   Frame Controls
-========================= */
 
 .frame-controls {
 
     display: flex;
 
-    gap: 15px;
+    flex-wrap: wrap;
 
-    margin-top: 15px;
+    gap: 10px;
 
 }
+
 
 
 .frame-info {
 
     display: flex;
 
-    gap: 30px;
+    gap: 35px;
 
-    background: var(--panel);
+    margin-top: 15px;
 
-    padding: 15px;
+    padding-top: 15px;
 
-    border-radius: 10px;
-
-    border: 1px solid var(--border);
+    border-top:
+        1px solid var(--border);
 
 }
+
 
 
 .frame-info p {
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
 }
+
+
+
+/* =========================
+   Video Information
+========================= */
+
+.video-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 15px 20px;
+
+    background:
+        var(--panel);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 10px;
+
+}
+
+
+
+.video-info p {
+
+    color:
+        var(--muted);
+
+}
+
+
+
+.video-info strong {
+
+    color:
+        var(--text);
+
+}
+
 
 
 /* =========================
@@ -248,19 +301,11 @@ header h1 {
 }
 
 
-/* =========================
-   Panels
-========================= */
 
 .panel {
 
     background:
-
-        linear-gradient(
-            145deg,
-            #242424,
-            #1d1d1d
-        );
+        var(--panel);
 
     border:
         1px solid var(--border);
@@ -272,13 +317,15 @@ header h1 {
 }
 
 
-.panel h2 {
 
-    font-size: 18px;
+.panel h2 {
 
     margin-bottom: 15px;
 
+    font-size: 18px;
+
 }
+
 
 
 /* =========================
@@ -289,14 +336,15 @@ header h1 {
 
     width: 100%;
 
-    height: 110px;
+    height: 120px;
 
     resize: vertical;
 
     background:
         #151515;
 
-    color: var(--text);
+    color:
+        var(--text);
 
     border:
         1px solid var(--border);
@@ -305,9 +353,8 @@ header h1 {
 
     padding: 12px;
 
-    font-size: 14px;
-
 }
+
 
 
 #noteInput:focus {
@@ -320,17 +367,19 @@ header h1 {
 }
 
 
+
 #notesList {
 
     list-style: none;
 
     margin-top: 15px;
 
-    max-height: 300px;
+    max-height: 350px;
 
     overflow-y: auto;
 
 }
+
 
 
 #notesList li {
@@ -349,10 +398,8 @@ header h1 {
 
     cursor: pointer;
 
-    transition:
-        0.2s ease;
-
 }
+
 
 
 #notesList li:hover {
@@ -360,10 +407,8 @@ header h1 {
     border-color:
         var(--accent);
 
-    background:
-        #202020;
-
 }
+
 
 
 /* =========================
@@ -378,11 +423,12 @@ header h1 {
 
     gap: 15px;
 
-    max-height: 400px;
+    max-height: 450px;
 
     overflow-y: auto;
 
 }
+
 
 
 #screenshots img {
@@ -397,21 +443,8 @@ header h1 {
 }
 
 
-#screenshots p {
-
-    color:
-        var(--muted);
-
-    margin-top: 5px;
-
-}
-
 
 #screenshots a {
-
-    display: inline-block;
-
-    margin-top: 5px;
 
     color:
         var(--accent);
@@ -421,12 +454,6 @@ header h1 {
 }
 
 
-#screenshots a:hover {
-
-    text-decoration: underline;
-
-}
-
 
 /* =========================
    Buttons
@@ -435,7 +462,7 @@ header h1 {
 button {
 
     padding:
-        11px 18px;
+        10px 16px;
 
     border:
         none;
@@ -461,6 +488,7 @@ button {
 }
 
 
+
 button:hover {
 
     background:
@@ -469,21 +497,14 @@ button:hover {
 }
 
 
+
 /* =========================
-   Scrollbars
+   Scrollbar
 ========================= */
 
 ::-webkit-scrollbar {
 
     width: 8px;
-
-}
-
-
-::-webkit-scrollbar-track {
-
-    background:
-        #111;
 
 }
 
@@ -497,6 +518,7 @@ button:hover {
         10px;
 
 }
+
 
 
 /* =========================
@@ -523,5 +545,14 @@ button:hover {
             flex-start;
 
     }
+
+
+    .frame-controls {
+
+        flex-direction:
+            column;
+
+    }
+
 
 }
