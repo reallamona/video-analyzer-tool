@@ -7,6 +7,9 @@ let ctx;
 let captureBtn;
 let screenshots;
 
+let savedScreenshots = [];
+
+
 
 function initializeScreenshots() {
 
@@ -18,7 +21,16 @@ function initializeScreenshots() {
 
     captureBtn = document.getElementById("captureBtn");
 
-    screenshots = document.getElementById("screenshots");
+    screenshots =
+        document.getElementById("screenshots");
+
+
+
+    savedScreenshots =
+        JSON.parse(
+            localStorage.getItem("screenshots")
+        ) || [];
+
 
 
     captureBtn.addEventListener(
@@ -26,7 +38,11 @@ function initializeScreenshots() {
         captureFrame
     );
 
+
+    renderScreenshots();
+
 }
+
 
 
 /* =========================
@@ -39,57 +55,163 @@ function captureFrame() {
     if (!video.videoWidth) return;
 
 
-    canvas.width = video.videoWidth;
 
-    canvas.height = video.videoHeight;
+    canvas.width =
+        video.videoWidth;
 
 
-    ctx.drawImage(video, 0, 0);
+    canvas.height =
+        video.videoHeight;
+
+
+
+    ctx.drawImage(
+        video,
+        0,
+        0
+    );
+
 
 
     const image =
-        canvas.toDataURL("image/png");
+        canvas.toDataURL(
+            "image/png"
+        );
 
 
-    const container =
-        document.createElement("div");
+
+    savedScreenshots.push({
+
+        image: image,
+
+        time: video.currentTime
+
+    });
 
 
-    const img =
-        document.createElement("img");
+
+    saveScreenshots();
 
 
-    img.src = image;
+    renderScreenshots();
+
+}
 
 
-    const label =
-        document.createElement("p");
+
+/* =========================
+   Save Screenshots
+========================= */
+
+function saveScreenshots() {
+
+    localStorage.setItem(
+        "screenshots",
+        JSON.stringify(savedScreenshots)
+    );
+
+}
 
 
-    label.textContent =
-        formatTime(video.currentTime);
+
+/* =========================
+   Display Screenshots
+========================= */
+
+function renderScreenshots() {
 
 
-    const download =
-        document.createElement("a");
+    screenshots.innerHTML = "";
 
 
-    download.href = image;
 
-    download.download =
-        `frame-${Math.floor(video.currentTime)}.png`;
-
-    download.textContent =
-        "Download Screenshot";
+    savedScreenshots.forEach(
+        (shot, index) => {
 
 
-    container.appendChild(img);
-
-    container.appendChild(label);
-
-    container.appendChild(download);
+        const container =
+            document.createElement("div");
 
 
-    screenshots.prepend(container);
+
+        const img =
+            document.createElement("img");
+
+
+        img.src =
+            shot.image;
+
+
+
+        const label =
+            document.createElement("p");
+
+
+        label.textContent =
+            formatTime(shot.time);
+
+
+
+        const download =
+            document.createElement("a");
+
+
+
+        download.href =
+            shot.image;
+
+
+        download.download =
+            `frame-${Math.floor(shot.time)}.png`;
+
+
+        download.textContent =
+            "Download Screenshot";
+
+
+
+        const deleteBtn =
+            document.createElement("button");
+
+
+
+        deleteBtn.textContent =
+            "Delete";
+
+
+
+        deleteBtn.onclick = () => {
+
+
+            savedScreenshots.splice(
+                index,
+                1
+            );
+
+
+            saveScreenshots();
+
+
+            renderScreenshots();
+
+
+        };
+
+
+
+        container.appendChild(img);
+
+        container.appendChild(label);
+
+        container.appendChild(download);
+
+        container.appendChild(deleteBtn);
+
+
+
+        screenshots.prepend(container);
+
+
+    });
 
 }
