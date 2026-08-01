@@ -167,6 +167,11 @@ function updateFrameNumber() {
         Math.floor(video.currentTime * fps);
 
 
-    frameNumberText.textContent = frame;
+    frameNumberText.textContent =
+        frame;
+
+
+    fpsDisplay.textContent =
+        fps;
 
 }
