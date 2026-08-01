@@ -444,32 +444,19 @@ button:hover {
 
 #noteInput {
 
-    width:
-        100%;
+    width: 100%;
 
-    height:
-        100px;
+    height: 100px;
 
-    resize:
-        vertical;
+    padding: 10px;
 
-    background:
-        var(--bg);
+    line-height: 1.3;
 
-    color:
-        var(--text);
+    font-size: 14px;
 
-    border:
-        1px solid var(--border);
-
-    padding:
-        10px;
-
-    border-radius:
-        6px;
+    letter-spacing: normal;
 
 }
-
 
 
 #notesList {
