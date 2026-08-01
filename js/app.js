@@ -9,5 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initializePlayer();
     initializeNotes();
     initializeScreenshots();
+    initializeFrames();
 
 });
