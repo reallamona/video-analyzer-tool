@@ -1,12 +1,13 @@
-/* =========================
-   Notes Module
-========================= */
+ /* =========================
+    Notes Module
+ ========================= */
 
 let notes = [];
 
 let noteInput;
 let addNoteBtn;
 let notesList;
+
 
 
 function initializeNotes() {
@@ -16,9 +17,24 @@ function initializeNotes() {
     notesList = document.getElementById("notesList");
 
 
-    addNoteBtn.addEventListener("click", addNote);
+    // Load saved notes
+
+    notes =
+        JSON.parse(
+            localStorage.getItem("notes")
+        ) || [];
+
+
+    addNoteBtn.addEventListener(
+        "click",
+        addNote
+    );
+
+
+    renderNotes();
 
 }
+
 
 
 /* =========================
@@ -27,9 +43,12 @@ function initializeNotes() {
 
 function addNote() {
 
-    const text = noteInput.value.trim();
+    const text =
+        noteInput.value.trim();
+
 
     if (text === "") return;
+
 
 
     notes.push({
@@ -40,11 +59,31 @@ function addNote() {
     });
 
 
+
+    saveNotes();
+
     renderNotes();
+
 
     noteInput.value = "";
 
 }
+
+
+
+/* =========================
+   Save Notes
+========================= */
+
+function saveNotes() {
+
+    localStorage.setItem(
+        "notes",
+        JSON.stringify(notes)
+    );
+
+}
+
 
 
 /* =========================
@@ -56,27 +95,82 @@ function renderNotes() {
     notesList.innerHTML = "";
 
 
-    notes.forEach(note => {
+
+    notes.forEach((note, index) => {
 
 
-        const item = document.createElement("li");
+        const item =
+            document.createElement("li");
+
 
 
         item.innerHTML = `
 
-            <strong>${formatTime(note.time)}</strong>
+            <strong>
+                ${formatTime(note.time)}
+            </strong>
+
             <br>
+
             ${note.text}
+
+
+            <br>
+
+            <button class="delete-note">
+                Delete
+            </button>
 
         `;
 
 
-        item.onclick = () => {
 
-            video.currentTime = note.time;
+        // Jump to timestamp
+
+        item.onclick = (event) => {
+
+            if (
+                event.target.classList.contains(
+                    "delete-note"
+                )
+            ) {
+                return;
+            }
+
+
+            video.currentTime =
+                note.time;
+
+
             video.play();
 
         };
+
+
+
+        // Delete button
+
+        const deleteBtn =
+            item.querySelector(
+                ".delete-note"
+            );
+
+
+
+        deleteBtn.onclick = () => {
+
+            notes.splice(
+                index,
+                1
+            );
+
+
+            saveNotes();
+
+            renderNotes();
+
+        };
+
 
 
         notesList.appendChild(item);
