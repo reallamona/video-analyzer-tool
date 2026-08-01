@@ -3,6 +3,7 @@
 ========================= */
 
 let fps = 60;
+let fpsDisplay;
 
 let previousFrameBtn;
 let nextFrameBtn;
