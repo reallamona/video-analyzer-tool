@@ -116,6 +116,19 @@ function loadYouTube(url) {
 
 
 /* =========================
+   YouTube Ready
+========================= */
+
+function youtubeReady(event) {
+
+    console.log(
+        "YouTube Player Ready"
+    );
+
+}
+
+
+/* =========================
    Extract ID
 ========================= */
 
