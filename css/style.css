@@ -581,6 +581,45 @@ button:hover {
 
 
 /* =========================
+   Delete Buttons
+========================= */
+
+.delete-btn {
+
+    width: auto;
+
+    padding: 4px 8px;
+
+    font-size: 12px;
+
+    background:
+        transparent;
+
+    color:
+        #ff6b6b;
+
+    border:
+        1px solid #ff6b6b;
+
+    border-radius:
+        5px;
+
+}
+
+
+.delete-btn:hover {
+
+    background:
+        #ff6b6b;
+
+    color:
+        white;
+
+}
+
+
+
+/* =========================
    Scrollbar
 ========================= */
 
