@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Analyzer</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Video Analyzer</h1>
+    </header>
+
+    <main class="container">
+
+        <!-- Left Side -->
+        <section class="viewer">
+
+            <input
+                type="file"
+                id="videoUpload"
+                accept="video/*">
+
+            <video
+                id="video"
+                controls>
+            </video>
+
+            <div class="video-info">
+
+                <p>
+                    <strong>Current Time:</strong>
+                    <span id="currentTime">00:00</span>
+                </p>
+
+                <p>
+                    <strong>Duration:</strong>
+                    <span id="duration">00:00</span>
+                </p>
+
+                <button id="captureBtn">
+                    Capture Screenshot
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Right Side -->
+        <aside class="sidebar">
+
+            <!-- Notes -->
+            <section class="panel">
+
+                <h2>Notes</h2>
+
+                <textarea
+                    id="noteInput"
+                    placeholder="Write a note..."></textarea>
+
+                <button id="addNoteBtn">
+                    Add Note
+                </button>
+
+                <ul id="notesList"></ul>
+
+            </section>
+
+            <!-- Screenshots -->
+            <section class="panel">
+
+                <h2>Screenshots</h2>
+
+                <div id="screenshots"></div>
+
+            </section>
+
+        </aside>
+
+    </main>
+
+    <!-- Hidden canvas used for screenshots -->
+    <canvas
+        id="canvas"
+        hidden>
+    </canvas>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
