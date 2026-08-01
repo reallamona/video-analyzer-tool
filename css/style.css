@@ -218,6 +218,56 @@ header h1 {
 
 
 
+/* =========================
+   FPS Selector
+========================= */
+
+.fps-selector {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    margin-bottom:
+        15px;
+
+}
+
+
+.fps-selector label {
+
+    color:
+        var(--muted);
+
+}
+
+
+.fps-selector select {
+
+    background:
+        var(--panel);
+
+    color:
+        var(--text);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        6px;
+
+    padding:
+        6px 10px;
+
+}
+
+
+
 .frame-controls {
 
     display:
