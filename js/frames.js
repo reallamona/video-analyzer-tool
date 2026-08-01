@@ -150,6 +150,34 @@ function initializeFrames() {
 }
 
 
+/* =========================
+   FPS Change
+========================= */
+
+fpsSelect.addEventListener(
+    "change",
+    () => {
+
+        fps =
+            Number(fpsSelect.value);
+
+
+        fpsDisplay.textContent =
+            fps;
+
+
+        updateFrameNumber();
+
+    }
+);
+
+
+
+video.addEventListener(
+    "timeupdate",
+    updateFrameNumber
+);
+
 
 /* =========================
    Move Frames
