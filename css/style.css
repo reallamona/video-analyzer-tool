@@ -9,11 +9,13 @@
 }
 
 
+
 /* =========================
    Variables
 ========================= */
 
 :root {
+
     --bg: #0b0b0b;
     --surface: #141414;
     --panel: #1a1a1a;
@@ -24,6 +26,7 @@
     --muted: #8a8a8a;
 
     --accent: #4f8cff;
+
 }
 
 
@@ -33,10 +36,22 @@
 ========================= */
 
 body {
-    font-family: Inter, Segoe UI, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
+
+    font-family:
+        Inter,
+        Segoe UI,
+        Arial,
+        sans-serif;
+
+    background:
+        var(--bg);
+
+    color:
+        var(--text);
+
+    min-height:
+        100vh;
+
 }
 
 
@@ -46,21 +61,36 @@ body {
 ========================= */
 
 header {
-    height: 60px;
 
-    display: flex;
-    align-items: center;
+    height:
+        60px;
 
-    padding: 0 24px;
+    display:
+        flex;
 
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
+    align-items:
+        center;
+
+    padding:
+        0 24px;
+
+    background:
+        var(--surface);
+
+    border-bottom:
+        1px solid var(--border);
+
 }
 
 
 header h1 {
-    font-size: 22px;
-    font-weight: 600;
+
+    font-size:
+        22px;
+
+    font-weight:
+        600;
+
 }
 
 
@@ -70,28 +100,121 @@ header h1 {
 ========================= */
 
 .container {
-    display: grid;
+
+    display:
+        grid;
 
     grid-template-columns:
         minmax(600px, 1fr)
         340px;
 
-    gap: 20px;
-    padding: 20px;
+    gap:
+        20px;
+
+    padding:
+        20px;
+
 }
+
 
 
 .viewer {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        15px;
+
 }
 
 
+
 .sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        15px;
+
+}
+
+
+
+/* =========================
+   Video Sources
+========================= */
+
+.video-sources {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+}
+
+
+
+#videoUpload,
+#videoURL {
+
+    background:
+        var(--panel);
+
+    color:
+        var(--text);
+
+    border:
+        1px solid var(--border);
+
+    padding:
+        8px 12px;
+
+    border-radius:
+        6px;
+
+}
+
+
+
+#videoURL {
+
+    flex:
+        1;
+
+}
+
+
+
+#videoURL::placeholder {
+
+    color:
+        var(--muted);
+
+}
+
+
+
+#videoURL:focus {
+
+    outline:
+        none;
+
+    border-color:
+        var(--accent);
+
 }
 
 
@@ -100,34 +223,32 @@ header h1 {
    Video
 ========================= */
 
-#videoUpload {
-    width: fit-content;
-
-    padding: 8px 12px;
-
-    background: var(--panel);
-    color: var(--text);
-
-    border: 1px solid var(--border);
-    border-radius: 6px;
-
-    cursor: pointer;
-}
-
-
 .video-container {
-    background: black;
 
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    background:
+        black;
 
-    overflow: hidden;
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        10px;
+
+    overflow:
+        hidden;
+
 }
+
 
 
 #video {
-    display: block;
-    width: 100%;
+
+    display:
+        block;
+
+    width:
+        100%;
+
 }
 
 
@@ -138,21 +259,35 @@ header h1 {
 
 .frame-panel,
 .panel {
-    background: var(--surface);
 
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    background:
+        var(--surface);
 
-    padding: 15px;
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        10px;
+
+    padding:
+        15px;
+
 }
+
 
 
 .frame-panel h2,
 .panel h2 {
-    font-size: 16px;
-    font-weight: 600;
 
-    margin-bottom: 12px;
+    font-size:
+        16px;
+
+    font-weight:
+        600;
+
+    margin-bottom:
+        12px;
+
 }
 
 
@@ -162,66 +297,82 @@ header h1 {
 ========================= */
 
 .frame-top-controls {
-    display: flex;
 
-    align-items: center;
-    justify-content: space-between;
+    display:
+        flex;
 
-    gap: 15px;
+    align-items:
+        center;
 
-    margin-bottom: 15px;
+    justify-content:
+        space-between;
+
+    gap:
+        15px;
+
+    margin-bottom:
+        15px;
+
 }
 
 
-.frame-controls {
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 8px;
-}
-
-
-.frame-info {
-    display: flex;
-
-    gap: 25px;
-
-    margin-top: 12px;
-    padding-top: 12px;
-
-    border-top: 1px solid var(--border);
-
-    color: var(--muted);
-}
-
-
-
-/* =========================
-   FPS Selector
-========================= */
 
 .fps-selector {
-    display: flex;
 
-    align-items: center;
+    display:
+        flex;
 
-    gap: 10px;
+    align-items:
+        center;
+
+    gap:
+        10px;
+
 }
+
 
 
 .fps-selector label {
-    color: var(--muted);
+
+    color:
+        var(--muted);
+
 }
 
 
+
 .fps-selector select {
-    background: var(--panel);
-    color: var(--text);
 
-    border: 1px solid var(--border);
-    border-radius: 6px;
+    background:
+        var(--panel);
 
-    padding: 6px 10px;
+    color:
+        var(--text);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        6px;
+
+    padding:
+        6px 10px;
+
+}
+
+
+
+.frame-controls {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        8px;
+
 }
 
 
@@ -231,23 +382,37 @@ header h1 {
 ========================= */
 
 button {
-    background: var(--panel);
-    color: var(--text);
 
-    border: 1px solid var(--border);
+    background:
+        var(--panel);
 
-    padding: 8px 14px;
+    color:
+        var(--text);
 
-    border-radius: 6px;
+    border:
+        1px solid var(--border);
 
-    cursor: pointer;
+    padding:
+        8px 14px;
 
-    transition: 0.2s ease;
+    border-radius:
+        6px;
+
+    cursor:
+        pointer;
+
+    transition:
+        0.2s ease;
+
 }
 
 
+
 button:hover {
-    border-color: var(--accent);
+
+    border-color:
+        var(--accent);
+
 }
 
 
@@ -258,28 +423,85 @@ button:hover {
 
 .delete-btn {
 
-    padding: 4px 8px;
+    padding:
+        4px 8px;
 
-    font-size: 12px;
+    font-size:
+        12px;
 
-    background: transparent;
+    background:
+        transparent;
 
-    color: #ff6b6b;
+    color:
+        #ff6b6b;
 
-    border: 1px solid #ff6b6b;
-
-    border-radius: 5px;
+    border:
+        1px solid #ff6b6b;
 
 }
+
 
 
 .delete-btn:hover {
 
-    background: #ff6b6b;
+    background:
+        #ff6b6b;
 
-    color: white;
+    color:
+        white;
 
 }
+
+
+
+/* =========================
+   Item Header
+========================= */
+
+.item-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    margin-bottom:
+        8px;
+
+}
+
+
+
+/* =========================
+   Frame Info
+========================= */
+
+.frame-info {
+
+    display:
+        flex;
+
+    gap:
+        25px;
+
+    margin-top:
+        12px;
+
+    padding-top:
+        12px;
+
+    border-top:
+        1px solid var(--border);
+
+    color:
+        var(--muted);
+
+}
+
 
 
 /* =========================
@@ -287,13 +509,16 @@ button:hover {
 ========================= */
 
 .video-info {
-    display: flex;
 
-    align-items: center;
+    display:
+        flex;
 
-    gap: 20px;
+    gap:
+        20px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
+
 }
 
 
@@ -303,61 +528,97 @@ button:hover {
 ========================= */
 
 #noteInput {
-    width: 100%;
 
-    min-height: 80px;
+    width:
+        100%;
 
-    padding: 10px;
+    min-height:
+        80px;
 
-    resize: vertical;
+    padding:
+        10px;
 
-    font-family: inherit;
-    font-size: 14px;
-    line-height: 1.4;
+    resize:
+        vertical;
 
-    background: var(--bg);
-    color: var(--text);
+    font-family:
+        inherit;
 
-    border: 1px solid var(--border);
-    border-radius: 6px;
+    font-size:
+        14px;
+
+    line-height:
+        1.4;
+
+    background:
+        var(--bg);
+
+    color:
+        var(--text);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        6px;
+
 }
 
-
-#noteInput::placeholder {
-    color: var(--muted);
-}
 
 
 #noteInput:focus {
-    outline: none;
 
-    border-color: var(--accent);
+    outline:
+        none;
+
+    border-color:
+        var(--accent);
+
 }
+
 
 
 #notesList {
-    list-style: none;
 
-    margin-top: 10px;
+    list-style:
+        none;
+
+    margin-top:
+        10px;
+
 }
+
 
 
 #notesList li {
-    padding: 10px;
 
-    margin-bottom: 8px;
+    padding:
+        10px;
 
-    background: var(--panel);
+    margin-bottom:
+        8px;
 
-    border: 1px solid var(--border);
-    border-radius: 6px;
+    background:
+        var(--panel);
 
-    cursor: pointer;
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        6px;
+
+    cursor:
+        pointer;
+
 }
 
 
+
 #notesList li:hover {
-    border-color: var(--accent);
+
+    border-color:
+        var(--accent);
+
 }
 
 
@@ -367,19 +628,31 @@ button:hover {
 ========================= */
 
 #screenshots {
-    display: flex;
 
-    flex-direction: column;
+    display:
+        flex;
 
-    gap: 10px;
+    flex-direction:
+        column;
+
+    gap:
+        10px;
+
 }
 
 
-#screenshots img {
-    width: 100%;
 
-    border: 1px solid var(--border);
-    border-radius: 6px;
+#screenshots img {
+
+    width:
+        100%;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        6px;
+
 }
 
 
@@ -389,13 +662,21 @@ button:hover {
 ========================= */
 
 ::-webkit-scrollbar {
-    width: 7px;
+
+    width:
+        7px;
+
 }
 
 
 ::-webkit-scrollbar-thumb {
-    background: #444;
-    border-radius: 10px;
+
+    background:
+        #444;
+
+    border-radius:
+        10px;
+
 }
 
 
@@ -406,24 +687,57 @@ button:hover {
 
 @media(max-width:1000px) {
 
+
     .container {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
+
     }
+
+
+
+    .video-sources {
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+    }
+
+
+
+    #videoURL {
+
+        width:
+            100%;
+
+    }
+
 
 
     .frame-top-controls {
-        flex-direction: column;
 
-        align-items: flex-start;
+        flex-direction:
+            column;
 
-        gap: 10px;
+        align-items:
+            flex-start;
+
     }
 
 
-    .frame-controls {
-        display: grid;
 
-        grid-template-columns: repeat(2,1fr);
+    .frame-controls {
+
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(2,1fr);
+
     }
 
 }
