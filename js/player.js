@@ -1,19 +1,46 @@
 /* =========================
-   Video Player Controls
+   Video Player
 ========================= */
 
-const video = document.getElementById("video");
-const videoUpload = document.getElementById("videoUpload");
+let video;
+let videoUpload;
+let currentTimeText;
+let durationText;
 
-const currentTimeText = document.getElementById("currentTime");
-const durationText = document.getElementById("duration");
+
+function initializePlayer() {
+
+    video = document.getElementById("video");
+    videoUpload = document.getElementById("videoUpload");
+
+    currentTimeText = document.getElementById("currentTime");
+    durationText = document.getElementById("duration");
+
+
+    videoUpload.addEventListener("change", loadVideo);
+
+
+    video.addEventListener("loadedmetadata", () => {
+
+        durationText.textContent = formatTime(video.duration);
+
+    });
+
+
+    video.addEventListener("timeupdate", () => {
+
+        currentTimeText.textContent = formatTime(video.currentTime);
+
+    });
+
+}
 
 
 /* =========================
    Load Video
 ========================= */
 
-videoUpload.addEventListener("change", (event) => {
+function loadVideo(event) {
 
     const file = event.target.files[0];
 
@@ -21,29 +48,7 @@ videoUpload.addEventListener("change", (event) => {
 
     video.src = URL.createObjectURL(file);
 
-});
-
-
-/* =========================
-   Video Metadata
-========================= */
-
-video.addEventListener("loadedmetadata", () => {
-
-    durationText.textContent = formatTime(video.duration);
-
-});
-
-
-/* =========================
-   Time Updates
-========================= */
-
-video.addEventListener("timeupdate", () => {
-
-    currentTimeText.textContent = formatTime(video.currentTime);
-
-});
+}
 
 
 /* =========================
@@ -52,9 +57,12 @@ video.addEventListener("timeupdate", () => {
 
 function formatTime(seconds) {
 
+    seconds = Math.floor(seconds);
+
     const minutes = Math.floor(seconds / 60);
 
-    const remainingSeconds = Math.floor(seconds % 60);
+    const remainingSeconds = seconds % 60;
+
 
     return (
         String(minutes).padStart(2, "0") +
