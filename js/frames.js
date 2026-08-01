@@ -184,14 +184,16 @@ function setupFPSSelector() {
 function moveFrames(amount) {
 
 
-    video.pause();
+    if (!isYouTube()) {
+
+        video.pause();
+
+    }
 
 
-    video.currentTime +=
-        amount / fps;
+    moveByFrames(amount);
 
 }
-
 
 
 /* =========================
