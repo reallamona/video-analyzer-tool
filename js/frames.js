@@ -7,6 +7,13 @@ let fps = 30;
 let fpsDisplay;
 let fpsSelect;
 
+let frameNumberText;
+
+
+/* =========================
+   Frame Buttons
+========================= */
+
 let previousFrameBtn;
 let nextFrameBtn;
 
@@ -20,14 +27,16 @@ let forward10Btn;
 let forward30Btn;
 let forward1mBtn;
 
-let frameNumberText;
 
 
 /* =========================
-   Initialize
+   Initialize Frames
 ========================= */
 
 function initializeFrames() {
+
+
+    // Frame Buttons
 
     previousFrameBtn =
         document.getElementById("previousFrame");
@@ -39,107 +48,46 @@ function initializeFrames() {
     back5Btn =
         document.getElementById("back5");
 
-
     back10Btn =
         document.getElementById("back10");
 
-
     back30Btn =
         document.getElementById("back30");
-
 
     back1mBtn =
         document.getElementById("back1m");
 
 
-
     forward5Btn =
         document.getElementById("forward5");
-
 
     forward10Btn =
         document.getElementById("forward10");
 
-
     forward30Btn =
         document.getElementById("forward30");
-
 
     forward1mBtn =
         document.getElementById("forward1m");
 
 
+
+    // Display Elements
+
     frameNumberText =
-    document.getElementById("frameNumber");
+        document.getElementById("frameNumber");
+
+    fpsDisplay =
+        document.getElementById("fps");
+
+    fpsSelect =
+        document.getElementById("fpsSelect");
 
 
-   fpsDisplay =
-    document.getElementById("fps");
 
+    setupFrameButtons();
 
-   fpsSelect =
-    document.getElementById("fpsSelect");
-   
-
-    nextFrameBtn.addEventListener(
-        "click",
-        () => moveFrames(1)
-    );
-
-
-    previousFrameBtn.addEventListener(
-        "click",
-        () => moveFrames(-1)
-    );
-
-
-    forward5Btn.addEventListener(
-        "click",
-        () => moveFrames(5)
-    );
-
-
-    back5Btn.addEventListener(
-        "click",
-        () => moveFrames(-5)
-    );
-
-
-    forward10Btn.addEventListener(
-        "click",
-        () => moveFrames(10)
-    );
-
-
-    back10Btn.addEventListener(
-        "click",
-        () => moveFrames(-10)
-    );
-
-
-    forward30Btn.addEventListener(
-        "click",
-        () => moveFrames(30)
-    );
-
-
-    back30Btn.addEventListener(
-        "click",
-        () => moveFrames(-30)
-    );
-
-
-    forward1mBtn.addEventListener(
-        "click",
-        () => moveFrames(fps * 60)
-    );
-
-
-    back1mBtn.addEventListener(
-        "click",
-        () => moveFrames(-(fps * 60))
-    );
-
+    setupFPSSelector();
 
 
     video.addEventListener(
@@ -150,33 +98,83 @@ function initializeFrames() {
 }
 
 
+
 /* =========================
-   FPS Change
+   Frame Button Events
 ========================= */
 
-fpsSelect.addEventListener(
-    "change",
-    () => {
-
-        fps =
-            Number(fpsSelect.value);
+function setupFrameButtons() {
 
 
-        fpsDisplay.textContent =
-            fps;
+    nextFrameBtn.onclick =
+        () => moveFrames(1);
 
 
-        updateFrameNumber();
-
-    }
-);
+    previousFrameBtn.onclick =
+        () => moveFrames(-1);
 
 
+    forward5Btn.onclick =
+        () => moveFrames(5);
 
-video.addEventListener(
-    "timeupdate",
-    updateFrameNumber
-);
+
+    back5Btn.onclick =
+        () => moveFrames(-5);
+
+
+    forward10Btn.onclick =
+        () => moveFrames(10);
+
+
+    back10Btn.onclick =
+        () => moveFrames(-10);
+
+
+    forward30Btn.onclick =
+        () => moveFrames(30);
+
+
+    back30Btn.onclick =
+        () => moveFrames(-30);
+
+
+    forward1mBtn.onclick =
+        () => moveFrames(fps * 60);
+
+
+    back1mBtn.onclick =
+        () => moveFrames(-(fps * 60));
+
+}
+
+
+
+/* =========================
+   FPS Selector
+========================= */
+
+function setupFPSSelector() {
+
+
+    fpsSelect.addEventListener(
+        "change",
+        () => {
+
+            fps =
+                Number(fpsSelect.value);
+
+
+            fpsDisplay.textContent =
+                fps;
+
+
+            updateFrameNumber();
+
+        }
+    );
+
+}
+
 
 
 /* =========================
@@ -185,22 +183,28 @@ video.addEventListener(
 
 function moveFrames(amount) {
 
+
     video.pause();
 
-    video.currentTime += amount / fps;
+
+    video.currentTime +=
+        amount / fps;
 
 }
 
 
 
 /* =========================
-   Update Frame Number
+   Update Frame Display
 ========================= */
 
 function updateFrameNumber() {
 
+
     const frame =
-        Math.floor(video.currentTime * fps);
+        Math.floor(
+            video.currentTime * fps
+        );
 
 
     frameNumberText.textContent =
