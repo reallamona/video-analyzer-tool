@@ -69,7 +69,11 @@ function initializeFrames() {
 
 
     frameNumberText =
-        document.getElementById("frameNumber");
+    document.getElementById("frameNumber");
+   
+    
+   fpsDisplay =
+    document.getElementById("fps");
 
 
 
