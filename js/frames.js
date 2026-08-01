@@ -2,8 +2,10 @@
    Frame Controller
 ========================= */
 
-let fps = 60;
+let fps = 30;
+
 let fpsDisplay;
+let fpsSelect;
 
 let previousFrameBtn;
 let nextFrameBtn;
