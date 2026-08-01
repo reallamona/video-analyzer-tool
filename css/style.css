@@ -195,6 +195,45 @@ header h1 {
 
 
 /* =========================
+   Frame Controls
+========================= */
+
+.frame-controls {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 15px;
+
+}
+
+
+.frame-info {
+
+    display: flex;
+
+    gap: 30px;
+
+    background: var(--panel);
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    border: 1px solid var(--border);
+
+}
+
+
+.frame-info p {
+
+    color: var(--muted);
+
+}
+
+
+/* =========================
    Sidebar
 ========================= */
 
