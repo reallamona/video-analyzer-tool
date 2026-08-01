@@ -36,33 +36,35 @@ function initializeFrames() {
     back5Btn =
         document.getElementById("back5");
 
-    
-   back10Btn =
+
+    back10Btn =
         document.getElementById("back10");
 
-   
-   back30Btn =
-    document.getElementById("back30");
-   
-   
-   back1mBtn =
-    document.getElementById("back1m");
+
+    back30Btn =
+        document.getElementById("back30");
+
+
+    back1mBtn =
+        document.getElementById("back1m");
+
 
 
     forward5Btn =
         document.getElementById("forward5");
 
-    
-   forward10Btn =
+
+    forward10Btn =
         document.getElementById("forward10");
-   
-   
-   forward30Btn =
-    document.getElementById("forward30");
-   
-   
-   forward1mBtn =
-    document.getElementById("forward1m");
+
+
+    forward30Btn =
+        document.getElementById("forward30");
+
+
+    forward1mBtn =
+        document.getElementById("forward1m");
+
 
 
     frameNumberText =
@@ -104,6 +106,31 @@ function initializeFrames() {
         "click",
         () => moveFrames(-10)
     );
+
+
+    forward30Btn.addEventListener(
+        "click",
+        () => moveFrames(30)
+    );
+
+
+    back30Btn.addEventListener(
+        "click",
+        () => moveFrames(-30)
+    );
+
+
+    forward1mBtn.addEventListener(
+        "click",
+        () => moveFrames(fps * 60)
+    );
+
+
+    back1mBtn.addEventListener(
+        "click",
+        () => moveFrames(-(fps * 60))
+    );
+
 
 
     video.addEventListener(
