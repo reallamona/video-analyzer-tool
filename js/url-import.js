@@ -85,23 +85,31 @@ function loadYouTube(url) {
         ".video-container"
     ).innerHTML = `
 
-
-        <iframe
-
-            width="100%"
-
-            height="600"
-
-            src="https://www.youtube.com/embed/${id}"
-
-            frameborder="0"
-
-            allowfullscreen>
-
-        </iframe>
-
+        <div id="youtubePlayer"></div>
 
     `;
+
+
+
+    player =
+        new YT.Player(
+            "youtubePlayer",
+            {
+
+                height: "600",
+
+                width: "100%",
+
+                videoId: id,
+
+                events: {
+
+                    onReady: youtubeReady
+
+                }
+
+            }
+        );
 
 }
 
