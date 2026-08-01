@@ -2,14 +2,18 @@
    Frame Controller
 ========================= */
 
+let fps = 60;
+
 let previousFrameBtn;
 let nextFrameBtn;
 
-let frameNumberText;
-let fpsText;
+let back5Btn;
+let back10Btn;
 
-let fps = 60;
-let currentFrame = 0;
+let forward5Btn;
+let forward10Btn;
+
+let frameNumberText;
 
 
 /* =========================
@@ -25,33 +29,58 @@ function initializeFrames() {
         document.getElementById("nextFrame");
 
 
+    back5Btn =
+        document.getElementById("back5");
+
+    back10Btn =
+        document.getElementById("back10");
+
+
+    forward5Btn =
+        document.getElementById("forward5");
+
+    forward10Btn =
+        document.getElementById("forward10");
+
+
     frameNumberText =
         document.getElementById("frameNumber");
 
 
-    fpsText =
-        document.getElementById("fps");
+
+    nextFrameBtn.addEventListener(
+        "click",
+        () => moveFrames(1)
+    );
 
 
     previousFrameBtn.addEventListener(
         "click",
-        previousFrame
+        () => moveFrames(-1)
     );
 
 
-    nextFrameBtn.addEventListener(
+    forward5Btn.addEventListener(
         "click",
-        nextFrame
+        () => moveFrames(5)
     );
 
 
-    video.addEventListener(
-        "loadedmetadata",
-        () => {
+    back5Btn.addEventListener(
+        "click",
+        () => moveFrames(-5)
+    );
 
-            fpsText.textContent = fps;
 
-        }
+    forward10Btn.addEventListener(
+        "click",
+        () => moveFrames(10)
+    );
+
+
+    back10Btn.addEventListener(
+        "click",
+        () => moveFrames(-10)
     );
 
 
@@ -63,39 +92,31 @@ function initializeFrames() {
 }
 
 
+
 /* =========================
-   Frame Movement
+   Move Frames
 ========================= */
 
-function previousFrame() {
+function moveFrames(amount) {
 
     video.pause();
 
-    video.currentTime -= 1 / fps;
+    video.currentTime += amount / fps;
 
 }
 
-
-function nextFrame() {
-
-    video.pause();
-
-    video.currentTime += 1 / fps;
-
-}
 
 
 /* =========================
-   Frame Counter
+   Update Frame Number
 ========================= */
 
 function updateFrameNumber() {
 
-    currentFrame =
+    const frame =
         Math.floor(video.currentTime * fps);
 
 
-    frameNumberText.textContent =
-        currentFrame;
+    frameNumberText.textContent = frame;
 
 }
