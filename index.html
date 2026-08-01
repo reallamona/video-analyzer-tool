@@ -61,49 +61,86 @@
 
 
         <!-- Frame Controls -->
+
         
         <section class="frame-panel">
             
         <h2>Frame Controls</h2>
-            
-        <div class="frame-controls">
+
+
+    <!-- FPS Selector -->
+
+    <div class="fps-selector">
+
+        <label for="fpsSelect">
+            FPS:
+        </label>
+
+
+        <select id="fpsSelect">
+
+            <option value="60">
+                60 FPS
+            </option>
+
+
+            <option value="30">
+                30 FPS
+            </option>
+
+        </select>
+
+    </div>
+
+
+
+    <div class="frame-controls">
 
         <button id="previousFrame">
             -1f
         </button>
 
+
         <button id="nextFrame">
             +1f
         </button>
+
 
         <button id="back5">
             -5f
         </button>
 
+
         <button id="forward5">
             +5f
         </button>
+
 
         <button id="back10">
             -10f
         </button>
 
+
         <button id="forward10">
             +10f
         </button>
-            
+
+
         <button id="back30">
             -30f
         </button>
-            
+
+
         <button id="forward30">
             +30f
         </button>
-            
+
+
         <button id="back1m">
             -1m
         </button>
-            
+
+
         <button id="forward1m">
             +1m
         </button>
@@ -111,19 +148,24 @@
 
     </div>
 
-            
-            <div class="frame-info">
+
+
+    <div class="frame-info">
 
 
         <p>
             <strong>Frame:</strong>
-            <span id="frameNumber">0</span>
+            <span id="frameNumber">
+                0
+            </span>
         </p>
 
 
         <p>
             <strong>FPS:</strong>
-            <span id="fps">60</span>
+            <span id="fps">
+                60
+            </span>
         </p>
 
 
