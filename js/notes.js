@@ -56,7 +56,7 @@ function addNote() {
     notes.push({
 
         time:
-            getCurrentVideoTime(),
+            getCurrentTime(),
 
         text:
             text
