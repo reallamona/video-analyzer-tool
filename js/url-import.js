@@ -103,7 +103,7 @@ function loadYouTube(url) {
 
                 width: "100%",
 
-                height: "600",
+                height: "100%",
 
                 videoId: id,
 
