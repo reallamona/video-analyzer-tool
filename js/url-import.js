@@ -34,32 +34,44 @@ function initializeURLImport() {
    Load URL
 ========================= */
 
-function loadURLVideo() {
+function loadYouTube(url) {
+
+    const id =
+        getYouTubeID(url);
 
 
-    const url =
-        videoURL.value.trim();
+    if (!id) return;
 
 
-
-    if (url === "") return;
-
-
-
-    if (
-        url.includes("youtube.com") ||
-        url.includes("youtu.be")
-    ) {
-
-        loadYouTube(url);
-
-        return;
-
-    }
+    document.querySelector(
+        ".video-container"
+    ).innerHTML = `
+        <div id="youtubePlayer"></div>
+    `;
 
 
+    player =
+        new YT.Player(
+            "youtubePlayer",
+            {
 
-    video.src = url;
+                height: "100%",
+                width: "100%",
+
+                videoId: id,
+
+                playerVars: {
+                    controls: 1
+                },
+
+                events: {
+
+                    onReady: youtubeReady
+
+                }
+
+            }
+        );
 
 }
 
