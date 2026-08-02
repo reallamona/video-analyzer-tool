@@ -153,6 +153,14 @@ function setupFrameButtons() {
     back1mBtn.onclick =
         () => moveFrames(-(fps * 60));
 
+   
+   forward5mBtn.onclick =
+        () => moveFrames(fps * 300);
+
+
+    back5mBtn.onclick =
+        () => moveFrames(-(fps * 300));
+
 }
 
 
