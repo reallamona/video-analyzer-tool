@@ -9,27 +9,18 @@ let addNoteBtn;
 let notesList;
 
 
-
 /* =========================
    Initialize
 ========================= */
 
 function initializeNotes() {
 
-    noteInput =
-        document.getElementById("noteInput");
+    noteInput = document.getElementById("noteInput");
 
+    addNoteBtn = document.getElementById("addNoteBtn");
 
-    addNoteBtn =
-        document.getElementById("addNoteBtn");
+    notesList = document.getElementById("notesList");
 
-
-    notesList =
-        document.getElementById("notesList");
-
-
-
-    // Load saved notes
 
     notes =
         JSON.parse(
@@ -37,12 +28,10 @@ function initializeNotes() {
         ) || [];
 
 
-
     addNoteBtn.addEventListener(
         "click",
         addNote
     );
-
 
 
     renderNotes();
@@ -61,25 +50,23 @@ function addNote() {
         noteInput.value.trim();
 
 
-
-    if (text === "") return;
-
+    if (!text) return;
 
 
     notes.push({
 
-        time: video.currentTime,
+        time:
+            video.currentTime,
 
-        text: text
+        text:
+            text
 
     });
-
 
 
     saveNotes();
 
     renderNotes();
-
 
 
     noteInput.value = "";
@@ -112,7 +99,6 @@ function renderNotes() {
     notesList.innerHTML = "";
 
 
-
     notes.forEach((note, index) => {
 
 
@@ -120,87 +106,98 @@ function renderNotes() {
             document.createElement("li");
 
 
+        const header =
+            document.createElement("div");
 
-        item.innerHTML = `
-
-            <div class="item-header">
-
-
-                <strong>
-                    ${formatTime(note.time)}
-                </strong>
+        header.className =
+            "item-header";
 
 
-                <button class="delete-btn">
-                    Delete
-                </button>
+        const timestamp =
+            document.createElement("strong");
 
-
-            </div>
+        timestamp.textContent =
+            formatTime(note.time);
 
 
 
-            <p>
-                ${note.text}
-            </p>
+        const deleteBtn =
+            document.createElement("button");
 
-        `;
+        deleteBtn.className =
+            "delete-btn";
+
+        deleteBtn.textContent =
+            "Delete";
+
+
+
+        header.appendChild(timestamp);
+
+        header.appendChild(deleteBtn);
+
+
+
+        const content =
+            document.createElement("p");
+
+        content.textContent =
+            note.text;
+
+
+
+        item.appendChild(header);
+
+        item.appendChild(content);
 
 
 
         // Jump to timestamp
 
-        item.onclick = (event) => {
+        item.addEventListener(
+            "click",
+            (event) => {
 
 
-            if (
-                event.target.classList.contains(
-                    "delete-btn"
-                )
-            ) {
+                if (
+                    event.target === deleteBtn
+                ) {
 
-                return;
+                    return;
+
+                }
+
+
+                video.currentTime =
+                    note.time;
+
+
+                video.play();
 
             }
-
-
-
-            video.currentTime =
-                note.time;
-
-
-            video.play();
-
-
-        };
+        );
 
 
 
         // Delete note
 
-        const deleteBtn =
-            item.querySelector(
-                ".delete-btn"
-            );
+        deleteBtn.addEventListener(
+            "click",
+            () => {
 
 
-
-        deleteBtn.onclick = () => {
-
-
-            notes.splice(
-                index,
-                1
-            );
+                notes.splice(
+                    index,
+                    1
+                );
 
 
+                saveNotes();
 
-            saveNotes();
+                renderNotes();
 
-            renderNotes();
-
-
-        };
+            }
+        );
 
 
 
