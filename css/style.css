@@ -522,7 +522,6 @@ button:hover {
 }
 
 
-
 /* =========================
    Notes
 ========================= */
@@ -608,8 +607,16 @@ button:hover {
     cursor:
         pointer;
 
-}
+    white-space:
+        pre-wrap;
 
+    overflow-wrap:
+        break-word;
+
+    word-break:
+        break-word;
+
+}
 
 
 #notesList li:hover {
@@ -617,14 +624,6 @@ button:hover {
     border-color:
         var(--accent);
 
-}
-
-
-.note {
-    width: 300px;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    white-space: normal;
 }
 
 
