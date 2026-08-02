@@ -9,26 +9,21 @@
 }
 
 
-
 /* =========================
    Variables
 ========================= */
 
 :root {
-
     --bg: #0b0b0b;
     --surface: #141414;
     --panel: #1a1a1a;
-
     --border: #2b2b2b;
 
     --text: #e8e8e8;
     --muted: #8a8a8a;
 
     --accent: #4f8cff;
-
 }
-
 
 
 /* =========================
@@ -36,24 +31,11 @@
 ========================= */
 
 body {
-
-    font-family:
-        Inter,
-        Segoe UI,
-        Arial,
-        sans-serif;
-
-    background:
-        var(--bg);
-
-    color:
-        var(--text);
-
-    min-height:
-        100vh;
-
+    font-family: Inter, Segoe UI, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
 }
-
 
 
 /* =========================
@@ -61,38 +43,19 @@ body {
 ========================= */
 
 header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
 
-    height:
-        60px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    padding:
-        0 24px;
-
-    background:
-        var(--surface);
-
-    border-bottom:
-        1px solid var(--border);
-
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
 }
-
 
 header h1 {
-
-    font-size:
-        22px;
-
-    font-weight:
-        600;
-
+    font-size: 22px;
+    font-weight: 600;
 }
-
 
 
 /* =========================
@@ -100,38 +63,19 @@ header h1 {
 ========================= */
 
 .container {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        minmax(600px, 1fr)
-        340px;
-
-    gap:
-        20px;
-
-    padding:
-        20px;
-
+    display: grid;
+    grid-template-columns: minmax(600px, 1fr) 340px;
+    gap: 20px;
+    padding: 20px;
 }
-
 
 
 .viewer,
 .sidebar {
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    gap:
-        15px;
-
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
-
 
 
 /* =========================
@@ -139,122 +83,64 @@ header h1 {
 ========================= */
 
 .video-sources {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        10px;
-
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
-
 
 
 #videoUpload,
-#videoURL {
+#videoURL,
+.fps-selector select {
+    background: var(--panel);
+    color: var(--text);
 
-    background:
-        var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
 
-    color:
-        var(--text);
-
-    border:
-        1px solid var(--border);
-
-    padding:
-        8px 12px;
-
-    border-radius:
-        6px;
-
+    padding: 8px 12px;
 }
 
 
-
 #videoURL {
-
-    flex:
-        1;
-
+    flex: 1;
 }
-
 
 
 #videoURL::placeholder {
-
-    color:
-        var(--muted);
-
+    color: var(--muted);
 }
 
 
-
-#videoURL:focus {
-
-    outline:
-        none;
-
-    border-color:
-        var(--accent);
-
+#videoURL:focus,
+#noteInput:focus {
+    outline: none;
+    border-color: var(--accent);
 }
 
 
 /* =========================
-   YouTube Video
+   Video
 ========================= */
 
 .video-container {
+    position: relative;
 
-    position:
-        relative;
+    background: black;
+    border: 1px solid var(--border);
+    border-radius: 10px;
 
-    background:
-        black;
-
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        10px;
-
-    overflow:
-        hidden;
-
-    min-height:
-        300px;
-
+    overflow: hidden;
+    min-height: 300px;
 }
-
 
 
 #video,
-#youtubePlayer {
-
-    display:
-        block;
-
-    width:
-        100%;
-
-}
-
-
-
+#youtubePlayer,
 #youtubePlayer iframe {
-
-    display:
-        block;
-
-    width:
-        100%;
-
+    display: block;
+    width: 100%;
 }
-
 
 
 /* =========================
@@ -263,122 +149,57 @@ header h1 {
 
 .frame-panel,
 .panel {
+    background: var(--surface);
 
-    background:
-        var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
 
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        10px;
-
-    padding:
-        15px;
-
+    padding: 15px;
 }
-
 
 
 .frame-panel h2,
 .panel h2 {
-
-    font-size:
-        16px;
-
-    font-weight:
-        600;
-
-    margin-bottom:
-        12px;
-
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
 }
-
 
 
 /* =========================
-   Frame Controls
+   Controls
 ========================= */
 
-.frame-top-controls {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    gap:
-        15px;
-
-    margin-bottom:
-        15px;
-
+.frame-top-controls,
+.fps-selector,
+.item-header {
+    display: flex;
+    align-items: center;
 }
 
+
+.frame-top-controls {
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 15px;
+}
 
 
 .fps-selector {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        10px;
-
+    gap: 10px;
 }
-
 
 
 .fps-selector label {
-
-    color:
-        var(--muted);
-
+    color: var(--muted);
 }
-
-
-
-.fps-selector select {
-
-    background:
-        var(--panel);
-
-    color:
-        var(--text);
-
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        6px;
-
-    padding:
-        6px 10px;
-
-}
-
 
 
 .frame-controls {
-
-    display:
-        flex;
-
-    flex-wrap:
-        wrap;
-
-    gap:
-        8px;
-
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
-
 
 
 /* =========================
@@ -386,154 +207,64 @@ header h1 {
 ========================= */
 
 button {
+    background: var(--panel);
+    color: var(--text);
 
-    background:
-        var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
 
-    color:
-        var(--text);
+    padding: 8px 14px;
 
-    border:
-        1px solid var(--border);
-
-    padding:
-        8px 14px;
-
-    border-radius:
-        6px;
-
-    cursor:
-        pointer;
-
-    transition:
-        0.2s ease;
-
+    cursor: pointer;
+    transition: .2s ease;
 }
-
 
 
 button:hover {
-
-    border-color:
-        var(--accent);
-
+    border-color: var(--accent);
 }
 
-
-
-/* =========================
-   Delete Button
-========================= */
 
 .delete-btn {
+    flex: 0 0 auto;
 
-    flex:
-        0 0 auto;
+    padding: 4px 8px;
 
-    width:
-        auto;
+    font-size: 12px;
+    line-height: 1;
 
-    padding:
-        4px 8px;
+    background: transparent;
+    color: #ff6b6b;
 
-    font-size:
-        12px;
-
-    line-height:
-        1;
-
-    background:
-        transparent;
-
-    color:
-        #ff6b6b;
-
-    border:
-        1px solid #ff6b6b;
-
+    border-color: #ff6b6b;
 }
-
 
 
 .delete-btn:hover {
-
-    background:
-        #ff6b6b;
-
-    color:
-        white;
-
+    background: #ff6b6b;
+    color: white;
 }
 
 
-
 /* =========================
-   Item Header
+   Information
 ========================= */
 
-.item-header {
+.frame-info,
+.video-info {
+    display: flex;
+    gap: 20px;
 
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    align-items:
-        center;
-
-    gap:
-        10px;
-
+    color: var(--muted);
 }
 
-
-
-/* =========================
-   Frame Info
-========================= */
 
 .frame-info {
+    margin-top: 12px;
+    padding-top: 12px;
 
-    display:
-        flex;
-
-    gap:
-        25px;
-
-    margin-top:
-        12px;
-
-    padding-top:
-        12px;
-
-    border-top:
-        1px solid var(--border);
-
-    color:
-        var(--muted);
-
+    border-top: 1px solid var(--border);
 }
-
-
-
-/* =========================
-   Video Information
-========================= */
-
-.video-info {
-
-    display:
-        flex;
-
-    gap:
-        20px;
-
-    color:
-        var(--muted);
-
-}
-
 
 
 /* =========================
@@ -541,123 +272,56 @@ button:hover {
 ========================= */
 
 #noteInput {
+    width: 100%;
+    min-height: 80px;
 
-    width:
-        100%;
+    padding: 10px;
 
-    min-height:
-        80px;
+    resize: vertical;
 
-    padding:
-        10px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.4;
 
-    resize:
-        vertical;
+    background: var(--bg);
+    color: var(--text);
 
-    font-family:
-        inherit;
-
-    font-size:
-        14px;
-
-    line-height:
-        1.4;
-
-    background:
-        var(--bg);
-
-    color:
-        var(--text);
-
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        6px;
-
+    border: 1px solid var(--border);
+    border-radius: 6px;
 }
-
-
-
-#noteInput:focus {
-
-    outline:
-        none;
-
-    border-color:
-        var(--accent);
-
-}
-
 
 
 #notesList {
-
-    list-style:
-        none;
-
-    margin-top:
-        10px;
-
+    list-style: none;
+    margin-top: 10px;
 }
-
 
 
 #notesList li {
+    padding: 10px;
+    margin-bottom: 8px;
 
-    display:
-        block;
+    background: var(--panel);
 
-    padding:
-        10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
 
-    margin-bottom:
-        8px;
+    cursor: pointer;
 
-    background:
-        var(--panel);
-
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        6px;
-
-    cursor:
-        pointer;
-
-    white-space:
-        pre-wrap;
-
-    overflow-wrap:
-        anywhere;
-
-    word-break:
-        break-word;
-
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
-
 
 
 #notesList li p {
-
-    margin-top:
-        8px;
-
-    max-width:
-        100%;
-
+    margin-top: 8px;
 }
-
 
 
 #notesList li:hover {
-
-    border-color:
-        var(--accent);
-
+    border-color: var(--accent);
 }
-
 
 
 /* =========================
@@ -665,33 +329,18 @@ button:hover {
 ========================= */
 
 #screenshots {
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    gap:
-        10px;
-
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
-
 
 
 #screenshots img {
+    width: 100%;
 
-    width:
-        100%;
-
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        6px;
-
+    border: 1px solid var(--border);
+    border-radius: 6px;
 }
-
 
 
 /* =========================
@@ -699,24 +348,14 @@ button:hover {
 ========================= */
 
 ::-webkit-scrollbar {
-
-    width:
-        7px;
-
+    width: 7px;
 }
-
 
 
 ::-webkit-scrollbar-thumb {
-
-    background:
-        #444;
-
-    border-radius:
-        10px;
-
+    background: #444;
+    border-radius: 10px;
 }
-
 
 
 /* =========================
@@ -725,57 +364,31 @@ button:hover {
 
 @media(max-width:1000px) {
 
-
     .container {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns: 1fr;
     }
-
 
 
     .video-sources {
-
-        flex-direction:
-            column;
-
-        align-items:
-            stretch;
-
+        flex-direction: column;
+        align-items: stretch;
     }
-
 
 
     #videoURL {
-
-        width:
-            100%;
-
+        width: 100%;
     }
-
 
 
     .frame-top-controls {
-
-        flex-direction:
-            column;
-
-        align-items:
-            flex-start;
-
+        flex-direction: column;
+        align-items: flex-start;
     }
 
 
-
     .frame-controls {
-
-        display:
-            grid;
-
-        grid-template-columns:
-            repeat(2,1fr);
-
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
     }
 
 }
