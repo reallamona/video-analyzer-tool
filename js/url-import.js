@@ -8,13 +8,11 @@ let videoURL;
 let loadURLBtn;
 
 
-
 /* =========================
    Initialize
 ========================= */
 
 function initializeURLImport() {
-
 
     videoURL =
         document.getElementById("videoURL");
@@ -22,7 +20,6 @@ function initializeURLImport() {
 
     loadURLBtn =
         document.getElementById("loadURLBtn");
-
 
 
     loadURLBtn.addEventListener(
@@ -33,21 +30,17 @@ function initializeURLImport() {
 }
 
 
-
 /* =========================
    Load URL
 ========================= */
 
 function loadURLVideo() {
 
-
     const url =
         videoURL.value.trim();
 
 
-
     if (url === "") return;
-
 
 
     if (
@@ -67,29 +60,23 @@ function loadURLVideo() {
 }
 
 
-
 /* =========================
    Load YouTube
 ========================= */
 
 function loadYouTube(url) {
 
-
     const id =
         getYouTubeID(url);
 
 
-
     if (!id) {
 
-        console.log(
-            "Invalid YouTube URL"
-        );
+        console.log("Invalid YouTube URL");
 
         return;
 
     }
-
 
 
     video.style.display =
@@ -102,7 +89,6 @@ function loadYouTube(url) {
         "block";
 
 
-
     if (player) {
 
         player.destroy();
@@ -110,36 +96,23 @@ function loadYouTube(url) {
     }
 
 
-
     player =
         new YT.Player(
             "youtubePlayer",
             {
 
-                width:
-                    "100%",
+                width: "100%",
 
+                height: "600",
 
-                height:
-                    "600",
-
-
-                videoId:
-                    id,
-
+                videoId: id,
 
                 playerVars: {
-
                     controls: 1
-
                 },
 
-
                 events: {
-
-                    onReady:
-                        youtubeReady
-
+                    onReady: youtubeReady
                 }
 
             }
@@ -148,13 +121,11 @@ function loadYouTube(url) {
 }
 
 
-
 /* =========================
    YouTube Ready
 ========================= */
 
 function youtubeReady() {
-
 
     console.log(
         "YouTube Player Ready"
@@ -163,9 +134,7 @@ function youtubeReady() {
 
     updateYouTubeDuration();
 
-
 }
-
 
 
 /* =========================
@@ -174,9 +143,7 @@ function youtubeReady() {
 
 function updateYouTubeTime() {
 
-
     if (!player) return;
-
 
 
     document.getElementById(
@@ -189,16 +156,13 @@ function updateYouTubeTime() {
 }
 
 
-
 /* =========================
    Update Duration
 ========================= */
 
 function updateYouTubeDuration() {
 
-
     if (!player) return;
-
 
 
     document.getElementById(
@@ -211,22 +175,18 @@ function updateYouTubeDuration() {
 }
 
 
-
 /* =========================
    Extract ID
 ========================= */
 
 function getYouTubeID(url) {
 
-
     const regex =
         /(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([^?&\/]+)/;
 
 
-
     const match =
         url.match(regex);
-
 
 
     return match
