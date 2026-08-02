@@ -2,14 +2,20 @@
    Video Analyzer App
 ========================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
-    console.log("Video Analyzer loaded");
+        console.log(
+            "Video Analyzer loaded"
+        );
 
-    initializePlayer();
-    initializeNotes();
-    initializeScreenshots();
-    initializeFrames();
-    initializeURLImport();
 
-});
+        initializePlayer();
+        initializeNotes();
+        initializeScreenshots();
+        initializeFrames();
+        initializeURLImport();
+
+    }
+);
