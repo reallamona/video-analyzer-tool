@@ -224,3 +224,28 @@ function getYouTubeID(url) {
         : null;
 
 }
+
+
+/* =========================
+   Get Current Video Time
+========================= */
+
+function getCurrentVideoTime() {
+
+    if (player) {
+
+        return player.getCurrentTime();
+
+    }
+
+
+    if (video) {
+
+        return video.currentTime;
+
+    }
+
+
+    return 0;
+
+}
