@@ -21,11 +21,13 @@ let back5Btn;
 let back10Btn;
 let back30Btn;
 let back1mBtn;
+let back5mBtn;
 
 let forward5Btn;
 let forward10Btn;
 let forward30Btn;
 let forward1mBtn;
+let forward5mBtn;
 
 
 
@@ -57,6 +59,9 @@ function initializeFrames() {
     back1mBtn =
         document.getElementById("back1m");
 
+   back5mBtn =
+        document.getElementById("back5m");
+
 
     forward5Btn =
         document.getElementById("forward5");
@@ -69,6 +74,9 @@ function initializeFrames() {
 
     forward1mBtn =
         document.getElementById("forward1m");
+
+   forward5mBtn =
+        document.getElementById("forward5m");
 
 
 
