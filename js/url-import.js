@@ -36,8 +36,14 @@ function initializeURLImport() {
 
 function loadYouTube(url) {
 
+
     const id =
         getYouTubeID(url);
+
+
+
+    console.log("YouTube ID:", id);
+
 
 
     if (!id) {
@@ -49,27 +55,14 @@ function loadYouTube(url) {
     }
 
 
-    const container =
-        document.querySelector(".video-container");
 
+    document.querySelector(
+        ".video-container"
+    ).innerHTML = `
 
-    container.innerHTML = `
         <div id="youtubePlayer"></div>
+
     `;
-
-
-
-    if (
-        typeof YT === "undefined"
-        ||
-        !YT.Player
-    ) {
-
-        console.log("YouTube API not ready");
-
-        return;
-
-    }
 
 
 
@@ -78,7 +71,7 @@ function loadYouTube(url) {
             "youtubePlayer",
             {
 
-                height: "100%",
+                height: "600",
 
                 width: "100%",
 
@@ -86,16 +79,15 @@ function loadYouTube(url) {
                 videoId: id,
 
 
-                playerVars: {
-
-                    controls: 1
-
-                },
-
-
                 events: {
 
-                    onReady: youtubeReady
+                    onReady: function() {
+
+                        console.log(
+                            "YouTube Player Ready"
+                        );
+
+                    }
 
                 }
 
