@@ -24,7 +24,14 @@ function getCurrentTime() {
     }
 
 
-    return video.currentTime;
+    if (video) {
+
+        return video.currentTime;
+
+    }
+
+
+    return 0;
 
 }
 
