@@ -134,6 +134,12 @@ function youtubeReady() {
 
     updateYouTubeDuration();
 
+
+    setInterval(
+        updateYouTubeTime,
+        100
+    );
+
 }
 
 
