@@ -8,47 +8,139 @@ let currentTimeText;
 let durationText;
 
 
+/* =========================
+   Initialize Player
+========================= */
+
 function initializePlayer() {
 
-    video = document.getElementById("video");
-    videoUpload = document.getElementById("videoUpload");
-
-    currentTimeText = document.getElementById("currentTime");
-    durationText = document.getElementById("duration");
+    video =
+        document.getElementById("video");
 
 
-    videoUpload.addEventListener("change", loadVideo);
+    videoUpload =
+        document.getElementById("videoUpload");
 
 
-    video.addEventListener("loadedmetadata", () => {
-
-        durationText.textContent = formatTime(video.duration);
-
-    });
+    currentTimeText =
+        document.getElementById("currentTime");
 
 
-    video.addEventListener("timeupdate", () => {
+    durationText =
+        document.getElementById("duration");
 
-        currentTimeText.textContent = formatTime(video.currentTime);
 
-    });
+
+    videoUpload.addEventListener(
+        "change",
+        loadVideo
+    );
+
+
+
+    video.addEventListener(
+        "loadedmetadata",
+        () => {
+
+            durationText.textContent =
+                formatTime(video.duration);
+
+        }
+    );
+
+
+
+    video.addEventListener(
+        "timeupdate",
+        () => {
+
+            currentTimeText.textContent =
+                formatTime(video.currentTime);
+
+        }
+    );
 
 }
 
 
+
 /* =========================
-   Load Video
+   Load Local Video
 ========================= */
 
 function loadVideo(event) {
 
-    const file = event.target.files[0];
+    const file =
+        event.target.files[0];
+
 
     if (!file) return;
 
-    video.src = URL.createObjectURL(file);
+
+
+    // Remove YouTube player if active
+
+    if (player) {
+
+        player.destroy();
+
+        player = null;
+
+    }
+
+
+
+    const container =
+        document.querySelector(
+            ".video-container"
+        );
+
+
+    container.innerHTML = `
+
+        <video
+            id="video"
+            controls>
+        </video>
+
+    `;
+
+
+
+    video =
+        document.getElementById("video");
+
+
+
+    video.src =
+        URL.createObjectURL(file);
+
+
+
+    video.addEventListener(
+        "loadedmetadata",
+        () => {
+
+            durationText.textContent =
+                formatTime(video.duration);
+
+        }
+    );
+
+
+
+    video.addEventListener(
+        "timeupdate",
+        () => {
+
+            currentTimeText.textContent =
+                formatTime(video.currentTime);
+
+        }
+    );
 
 }
+
 
 
 /* =========================
@@ -75,9 +167,7 @@ function formatTime(seconds) {
 
 
     const secs =
-        Math.floor(
-            seconds % 60
-        );
+        Math.floor(seconds % 60);
 
 
     const milliseconds =
