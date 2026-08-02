@@ -17,25 +17,20 @@ function initializePlayer() {
     video =
         document.getElementById("video");
 
-
     videoUpload =
         document.getElementById("videoUpload");
-
 
     currentTimeText =
         document.getElementById("currentTime");
 
-
     durationText =
         document.getElementById("duration");
-
 
 
     videoUpload.addEventListener(
         "change",
         loadVideo
     );
-
 
 
     video.addEventListener(
@@ -47,7 +42,6 @@ function initializePlayer() {
 
         }
     );
-
 
 
     video.addEventListener(
@@ -63,7 +57,6 @@ function initializePlayer() {
 }
 
 
-
 /* =========================
    Load Local Video
 ========================= */
@@ -77,9 +70,6 @@ function loadVideo(event) {
     if (!file) return;
 
 
-
-    // Remove YouTube player if active
-
     if (player) {
 
         player.destroy();
@@ -87,7 +77,6 @@ function loadVideo(event) {
         player = null;
 
     }
-
 
 
     const container =
@@ -106,15 +95,12 @@ function loadVideo(event) {
     `;
 
 
-
     video =
         document.getElementById("video");
 
 
-
     video.src =
         URL.createObjectURL(file);
-
 
 
     video.addEventListener(
@@ -128,7 +114,6 @@ function loadVideo(event) {
     );
 
 
-
     video.addEventListener(
         "timeupdate",
         () => {
@@ -140,7 +125,6 @@ function loadVideo(event) {
     );
 
 }
-
 
 
 /* =========================
