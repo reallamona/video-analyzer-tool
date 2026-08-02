@@ -32,3 +32,73 @@ function getCurrentTime() {
     return 0;
 
 }
+
+
+/* =========================
+   Get Duration
+========================= */
+
+function getDuration() {
+
+    if (isYouTube()) {
+
+        return player.getDuration();
+
+    }
+
+
+    if (video) {
+
+        return video.duration;
+
+    }
+
+
+    return 0;
+
+}
+
+
+/* =========================
+   Seek Video
+========================= */
+
+function seekVideo(time) {
+
+    if (isYouTube()) {
+
+        player.seekTo(
+            time,
+            true
+        );
+
+        return;
+
+    }
+
+
+    if (video) {
+
+        video.currentTime =
+            time;
+
+    }
+
+}
+
+
+/* =========================
+   Move By Frames
+========================= */
+
+function moveByFrames(frames) {
+
+    const seconds =
+        frames / fps;
+
+
+    seekVideo(
+        getCurrentTime() + seconds
+    );
+
+}
