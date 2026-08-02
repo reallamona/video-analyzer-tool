@@ -58,27 +58,35 @@ function loadVideo(event) {
 function formatTime(seconds) {
 
     if (isNaN(seconds)) {
+
         return "00:00:00:000";
+
     }
 
 
-    const hours = Math.floor(seconds / 3600);
+    const hours =
+        Math.floor(seconds / 3600);
 
-    const minutes = Math.floor(
-        (seconds % 3600) / 60
-    );
 
-    const secs = Math.floor(
-        seconds % 60
-    );
+    const minutes =
+        Math.floor(
+            (seconds % 3600) / 60
+        );
 
-    const milliseconds = Math.floor(
-        (seconds % 1) * 1000
-    );
+
+    const secs =
+        Math.floor(
+            seconds % 60
+        );
+
+
+    const milliseconds =
+        Math.floor(
+            (seconds % 1) * 1000
+        );
 
 
     return (
-
         String(hours).padStart(2, "0")
         + ":"
         +
@@ -89,7 +97,6 @@ function formatTime(seconds) {
         + ":"
         +
         String(milliseconds).padStart(3, "0")
-
     );
 
 }
