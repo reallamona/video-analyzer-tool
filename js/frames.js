@@ -226,7 +226,6 @@ function moveFrames(amount) {
 
 function updateFrameNumber() {
 
-
     const frame =
         Math.floor(
             getCurrentTime() * fps
