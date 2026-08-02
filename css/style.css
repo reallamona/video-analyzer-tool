@@ -565,7 +565,6 @@ button:hover {
 }
 
 
-
 #noteInput:focus {
 
     outline:
@@ -575,7 +574,6 @@ button:hover {
         var(--accent);
 
 }
-
 
 
 #notesList {
@@ -622,6 +620,13 @@ button:hover {
 }
 
 
+.note {
+    width: 300px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
 
 /* =========================
    Screenshots
@@ -639,7 +644,6 @@ button:hover {
         10px;
 
 }
-
 
 
 #screenshots img {
