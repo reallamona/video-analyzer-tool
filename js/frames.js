@@ -38,10 +38,9 @@ let forward5mBtn;
 function initializeFrames() {
 
 
-    // Frame Buttons
-
     previousFrameBtn =
         document.getElementById("previousFrame");
+
 
     nextFrameBtn =
         document.getElementById("nextFrame");
@@ -50,43 +49,51 @@ function initializeFrames() {
     back5Btn =
         document.getElementById("back5");
 
+
     back10Btn =
         document.getElementById("back10");
+
 
     back30Btn =
         document.getElementById("back30");
 
+
     back1mBtn =
         document.getElementById("back1m");
 
-   back5mBtn =
+
+    back5mBtn =
         document.getElementById("back5m");
 
 
     forward5Btn =
         document.getElementById("forward5");
 
+
     forward10Btn =
         document.getElementById("forward10");
+
 
     forward30Btn =
         document.getElementById("forward30");
 
+
     forward1mBtn =
         document.getElementById("forward1m");
 
-   forward5mBtn =
+
+    forward5mBtn =
         document.getElementById("forward5m");
 
 
 
-    // Display Elements
-
     frameNumberText =
         document.getElementById("frameNumber");
 
+
     fpsDisplay =
         document.getElementById("fps");
+
 
     fpsSelect =
         document.getElementById("fpsSelect");
@@ -98,9 +105,9 @@ function initializeFrames() {
     setupFPSSelector();
 
 
-    video.addEventListener(
-        "timeupdate",
-        updateFrameNumber
+    setInterval(
+        updateFrameNumber,
+        100
     );
 
 }
@@ -153,8 +160,8 @@ function setupFrameButtons() {
     back1mBtn.onclick =
         () => moveFrames(-(fps * 60));
 
-   
-   forward5mBtn.onclick =
+
+    forward5mBtn.onclick =
         () => moveFrames(fps * 300);
 
 
@@ -212,6 +219,7 @@ function moveFrames(amount) {
 }
 
 
+
 /* =========================
    Update Frame Display
 ========================= */
@@ -221,7 +229,7 @@ function updateFrameNumber() {
 
     const frame =
         Math.floor(
-            video.currentTime * fps
+            getCurrentTime() * fps
         );
 
 
