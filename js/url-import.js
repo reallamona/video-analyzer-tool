@@ -62,7 +62,6 @@ function loadURLVideo() {
     }
 
 
-
     video.src = url;
 
 }
@@ -70,7 +69,7 @@ function loadURLVideo() {
 
 
 /* =========================
-   YouTube Embed
+   Load YouTube
 ========================= */
 
 function loadYouTube(url) {
@@ -78,13 +77,6 @@ function loadYouTube(url) {
 
     const id =
         getYouTubeID(url);
-
-
-
-    console.log(
-        "YouTube ID:",
-        id
-    );
 
 
 
@@ -100,29 +92,9 @@ function loadYouTube(url) {
 
 
 
-    if (
-        typeof YT === "undefined" ||
-        !YT.Player
-    ) {
-
-        console.log(
-            "YouTube API not ready"
-        );
-
-        return;
-
-    }
-
-
-
-    // Hide local video
-
     video.style.display =
         "none";
 
-
-
-    // Show YouTube player
 
     document.getElementById(
         "youtubePlayer"
@@ -130,8 +102,6 @@ function loadYouTube(url) {
         "block";
 
 
-
-    // Remove old player
 
     if (player) {
 
@@ -146,12 +116,16 @@ function loadYouTube(url) {
             "youtubePlayer",
             {
 
-                height: "600",
+                width:
+                    "100%",
 
-                width: "100%",
+
+                height:
+                    "600",
 
 
-                videoId: id,
+                videoId:
+                    id,
 
 
                 playerVars: {
@@ -190,18 +164,12 @@ function youtubeReady() {
     updateYouTubeDuration();
 
 
-
-    setInterval(
-        updateYouTubeTime,
-        100
-    );
-
 }
 
 
 
 /* =========================
-   YouTube Time Update
+   Update Time
 ========================= */
 
 function updateYouTubeTime() {
@@ -223,7 +191,7 @@ function updateYouTubeTime() {
 
 
 /* =========================
-   YouTube Duration
+   Update Duration
 ========================= */
 
 function updateYouTubeDuration() {
@@ -264,32 +232,5 @@ function getYouTubeID(url) {
     return match
         ? match[1]
         : null;
-
-}
-
-
-
-/* =========================
-   Get Current Video Time
-========================= */
-
-function getCurrentVideoTime() {
-
-
-    if (player) {
-
-        return player.getCurrentTime();
-
-    }
-
-
-    if (video) {
-
-        return video.currentTime;
-
-    }
-
-
-    return 0;
 
 }
