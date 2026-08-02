@@ -2,12 +2,16 @@
    URL Import
 ========================= */
 
-let player;
+let player = null;
 
 let videoURL;
 let loadURLBtn;
 
 
+
+/* =========================
+   Initialize
+========================= */
 
 function initializeURLImport() {
 
@@ -34,21 +38,24 @@ function initializeURLImport() {
    Load URL
 ========================= */
 
-function loadYouTube(url) {
+function loadURLVideo() {
 
 
-    const id =
-        getYouTubeID(url);
-
-
-
-    console.log("YouTube ID:", id);
+    const url =
+        videoURL.value.trim();
 
 
 
-    if (!id) {
+    if (url === "") return;
 
-        console.log("Invalid YouTube URL");
+
+
+    if (
+        url.includes("youtube.com") ||
+        url.includes("youtu.be")
+    ) {
+
+        loadYouTube(url);
 
         return;
 
@@ -56,43 +63,7 @@ function loadYouTube(url) {
 
 
 
-    document.querySelector(
-        ".video-container"
-    ).innerHTML = `
-
-        <div id="youtubePlayer"></div>
-
-    `;
-
-
-
-    player =
-        new YT.Player(
-            "youtubePlayer",
-            {
-
-                height: "600",
-
-                width: "100%",
-
-
-                videoId: id,
-
-
-                events: {
-
-                    onReady: function() {
-
-                        console.log(
-                            "YouTube Player Ready"
-                        );
-
-                    }
-
-                }
-
-            }
-        );
+    video.src = url;
 
 }
 
@@ -110,17 +81,63 @@ function loadYouTube(url) {
 
 
 
-    if (!id) return;
+    console.log(
+        "YouTube ID:",
+        id
+    );
 
 
 
-    document.querySelector(
-        ".video-container"
-    ).innerHTML = `
+    if (!id) {
 
-        <div id="youtubePlayer"></div>
+        console.log(
+            "Invalid YouTube URL"
+        );
 
-    `;
+        return;
+
+    }
+
+
+
+    if (
+        typeof YT === "undefined" ||
+        !YT.Player
+    ) {
+
+        console.log(
+            "YouTube API not ready"
+        );
+
+        return;
+
+    }
+
+
+
+    // Hide local video
+
+    video.style.display =
+        "none";
+
+
+
+    // Show YouTube player
+
+    document.getElementById(
+        "youtubePlayer"
+    ).style.display =
+        "block";
+
+
+
+    // Remove old player
+
+    if (player) {
+
+        player.destroy();
+
+    }
 
 
 
@@ -133,11 +150,21 @@ function loadYouTube(url) {
 
                 width: "100%",
 
+
                 videoId: id,
+
+
+                playerVars: {
+
+                    controls: 1
+
+                },
+
 
                 events: {
 
-                    onReady: youtubeReady
+                    onReady:
+                        youtubeReady
 
                 }
 
@@ -152,7 +179,7 @@ function loadYouTube(url) {
    YouTube Ready
 ========================= */
 
-function youtubeReady(event) {
+function youtubeReady() {
 
 
     console.log(
@@ -169,7 +196,6 @@ function youtubeReady(event) {
         100
     );
 
-
 }
 
 
@@ -185,22 +211,19 @@ function updateYouTubeTime() {
 
 
 
-    const currentTime =
-        player.getCurrentTime();
-
-
-
     document.getElementById(
         "currentTime"
     ).textContent =
-        formatTime(currentTime);
+        formatTime(
+            player.getCurrentTime()
+        );
 
 }
 
 
 
 /* =========================
-   YouTube Duration Update
+   YouTube Duration
 ========================= */
 
 function updateYouTubeDuration() {
@@ -210,17 +233,15 @@ function updateYouTubeDuration() {
 
 
 
-    const duration =
-        player.getDuration();
-
-
-
     document.getElementById(
         "duration"
     ).textContent =
-        formatTime(duration);
+        formatTime(
+            player.getDuration()
+        );
 
 }
+
 
 
 /* =========================
@@ -231,7 +252,7 @@ function getYouTubeID(url) {
 
 
     const regex =
-        /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/;
+        /(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([^?&\/]+)/;
 
 
 
@@ -247,11 +268,13 @@ function getYouTubeID(url) {
 }
 
 
+
 /* =========================
    Get Current Video Time
 ========================= */
 
 function getCurrentVideoTime() {
+
 
     if (player) {
 
