@@ -184,27 +184,17 @@ header h1 {
    Controls
 ========================= */
 
-.frame-top-controls,
-.fps-selector,
-.item-header {
-    display: flex;
-    align-items: center;
-}
-
-
 .frame-top-controls {
-    justify-content: space-between;
-    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     margin-bottom: 15px;
 }
 
-.frame-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
 
 .fps-selector {
+    display: flex;
+    align-items: center;
     gap: 10px;
 }
 
@@ -214,10 +204,30 @@ header h1 {
 }
 
 
-.frame-controls {
+.frame-buttons {
     display: flex;
-    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+
+.frame-buttons button {
+    flex: 1;
+}
+
+
+/* =========================
+   Frame Movement Controls
+========================= */
+
+.frame-controls {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
     gap: 8px;
+
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
 }
 
 
@@ -226,15 +236,19 @@ header h1 {
 ========================= */
 
 button {
+
     background: var(--panel);
     color: var(--text);
 
     border: 1px solid var(--border);
     border-radius: 6px;
 
-    padding: 8px 14px;
+    padding: 7px 12px;
+
+    font-size: 14px;
 
     cursor: pointer;
+
     transition: .2s ease;
 }
 
@@ -243,39 +257,25 @@ button:hover {
     border-color: var(--accent);
 }
 
-.delete-btn {
-    flex: 0 0 auto;
-
-    padding: 4px 8px;
-
-    font-size: 12px;
-    line-height: 1;
-
-    background: transparent;
-    color: #ff6b6b;
-
-    border-color: #ff6b6b;
-}
-
-
-.delete-btn:hover {
-    background: #ff6b6b;
-    color: white;
-}
-
 
 /* =========================
    Remove Video Button
 ========================= */
 
 #removeVideoBtn {
+
     background: #8b1f1f;
+
     border-color: #b22d2d;
+
     color: white;
 }
 
+
 #removeVideoBtn:hover {
+
     background: #a62828;
+
     border-color: #d13d3d;
 }
 
