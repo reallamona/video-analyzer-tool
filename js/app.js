@@ -1,5 +1,5 @@
 /* =========================
-   Video Analyzer App
+   Video Reviewer App
 ========================= */
 
 document.addEventListener(
