@@ -1,4 +1,4 @@
-# Planned Improvements
+## Planned Improvements
 
 1. You have a live video, and while playing, you have a Gamepad display to experiment with things
 2. Dark/Light toggle
