@@ -7,6 +7,6 @@
 6. Add custom names to screenshots
 7. Add a mute video button
 
-Complete
+## Complete
 
 Add +5m and -5m frame buttons
