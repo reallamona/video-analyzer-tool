@@ -31,48 +31,27 @@ function initializeRemoveVideo() {
     }
 
 
-    removeVideoBtn.addEventListener(
-        "click",
-        () => {
+    removeVideoBtn.addEventListener("click", () => {
 
-            console.log(
-                "Removing video..."
-            );
+        video.pause();
 
+        video.src = "";
 
-            // Stop video
-            video.pause();
+        video.load();
 
 
-            // Clear video source
-            video.removeAttribute(
-                "src"
-            );
-
-            video.load();
-
-
-            // Clear file upload
-            if (videoUpload) {
-
-                videoUpload.value = "";
-
-            }
-
-
-            // Remove YouTube content
-            if (youtubePlayer) {
-
-                youtubePlayer.innerHTML = "";
-
-            }
-
-
-            console.log(
-                "Video removed"
-            );
-
+        if (videoUpload) {
+            videoUpload.value = "";
         }
-    );
+
+
+        if (youtubePlayer) {
+            youtubePlayer.innerHTML = "";
+        }
+
+
+        console.log("Video removed");
+
+    });
 
 }
