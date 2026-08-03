@@ -1,4 +1,4 @@
-## Planned Improvements
+## Planned Improvements:
 
 1. You have a live video, and while playing, you have a Gamepad display to experiment with things
 2. Dark/Light toggle
@@ -7,6 +7,6 @@
 6. Add custom names to screenshots
 7. Add a mute video button
 
-## Completed
+## Completed:
 
 Add +5m and -5m frame buttons
