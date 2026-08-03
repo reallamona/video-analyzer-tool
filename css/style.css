@@ -238,7 +238,6 @@ button:hover {
     border-color: var(--accent);
 }
 
-
 .delete-btn {
     flex: 0 0 auto;
 
@@ -258,6 +257,23 @@ button:hover {
     background: #ff6b6b;
     color: white;
 }
+
+
+/* =========================
+   Remove Video Button
+========================= */
+
+#removeVideoBtn {
+    background: #8b1f1f;
+    border-color: #b22d2d;
+    color: white;
+}
+
+#removeVideoBtn:hover {
+    background: #a62828;
+    border-color: #d13d3d;
+}
+
 
 
 /* =========================
