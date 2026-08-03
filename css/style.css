@@ -198,6 +198,11 @@ header h1 {
     margin-bottom: 15px;
 }
 
+.frame-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
 .fps-selector {
     gap: 10px;
