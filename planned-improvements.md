@@ -9,4 +9,4 @@
 
 ## Completed:
 
-1. Add +5m and -5m frame buttons
+- Add +5m and -5m frame buttons
