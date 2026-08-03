@@ -7,7 +7,7 @@ document.addEventListener(
     () => {
 
         console.log(
-            "Video Analyzer loaded"
+            "Video Reviewer loaded"
         );
 
 
@@ -16,6 +16,7 @@ document.addEventListener(
         initializeScreenshots();
         initializeFrames();
         initializeURLImport();
+        initializeRemoveVideo();
 
     }
 );
