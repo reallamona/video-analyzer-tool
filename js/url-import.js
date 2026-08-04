@@ -7,6 +7,8 @@ let player = null;
 let videoURL;
 let loadURLBtn;
 
+let youtubeTimeInterval = null;
+
 
 /* =========================
    Initialize
@@ -22,10 +24,14 @@ function initializeURLImport() {
         document.getElementById("loadURLBtn");
 
 
-    loadURLBtn.addEventListener(
-        "click",
-        loadURLVideo
-    );
+    if (loadURLBtn) {
+
+        loadURLBtn.addEventListener(
+            "click",
+            loadURLVideo
+        );
+
+    }
 
 }
 
@@ -55,7 +61,29 @@ function loadURLVideo() {
     }
 
 
+    // Load direct video URL
+
+    if (player) {
+
+        player.destroy();
+
+        player = null;
+
+    }
+
+
+    document.getElementById(
+        "youtubePlayer"
+    ).style.display =
+        "none";
+
+
+    video.style.display =
+        "block";
+
+
     video.src = url;
+
 
 }
 
@@ -72,12 +100,16 @@ function loadYouTube(url) {
 
     if (!id) {
 
-        console.log("Invalid YouTube URL");
+        console.log(
+            "Invalid YouTube URL"
+        );
 
         return;
 
     }
 
+
+    // Hide local video
 
     video.style.display =
         "none";
@@ -89,9 +121,20 @@ function loadYouTube(url) {
         "block";
 
 
+    video.pause();
+
+    video.removeAttribute(
+        "src"
+    );
+
+    video.load();
+
+
     if (player) {
 
         player.destroy();
+
+        player = null;
 
     }
 
@@ -135,10 +178,20 @@ function youtubeReady() {
     updateYouTubeDuration();
 
 
-    setInterval(
-        updateYouTubeTime,
-        100
-    );
+    if (youtubeTimeInterval) {
+
+        clearInterval(
+            youtubeTimeInterval
+        );
+
+    }
+
+
+    youtubeTimeInterval =
+        setInterval(
+            updateYouTubeTime,
+            100
+        );
 
 }
 
@@ -152,12 +205,20 @@ function updateYouTubeTime() {
     if (!player) return;
 
 
-    document.getElementById(
-        "currentTime"
-    ).textContent =
-        formatTime(
-            player.getCurrentTime()
+    const currentTime =
+        document.getElementById(
+            "currentTime"
         );
+
+
+    if (currentTime) {
+
+        currentTime.textContent =
+            formatTime(
+                player.getCurrentTime()
+            );
+
+    }
 
 }
 
@@ -171,12 +232,20 @@ function updateYouTubeDuration() {
     if (!player) return;
 
 
-    document.getElementById(
-        "duration"
-    ).textContent =
-        formatTime(
-            player.getDuration()
+    const duration =
+        document.getElementById(
+            "duration"
         );
+
+
+    if (duration) {
+
+        duration.textContent =
+            formatTime(
+                player.getDuration()
+            );
+
+    }
 
 }
 
