@@ -54,35 +54,36 @@ function initializePlayer() {
 
 function addVideoListeners() {
 
+    video.addEventListener(
+        "loadedmetadata",
+        () => {
+
+            if (durationText) {
+
+                durationText.textContent =
+                    formatTime(video.duration);
+
+            }
+
+        }
+    );
+
 
     video.addEventListener(
-    "loadedmetadata",
-    () => {
+        "timeupdate",
+        () => {
 
-        if (durationText) {
+            if (currentTimeText) {
 
-            durationText.textContent =
-                formatTime(video.duration);
+                currentTimeText.textContent =
+                    formatTime(video.currentTime);
 
-        }
-
-    }
-);
-
-
-   video.addEventListener(
-    "timeupdate",
-    () => {
-
-        if (currentTimeText) {
-
-            currentTimeText.textContent =
-                formatTime(video.currentTime);
+            }
 
         }
+    );
 
-    }
-);
+}
 
 
 /* =========================
@@ -150,7 +151,6 @@ function loadVideo(event) {
 
     video.load();
 
-
 }
 
 
@@ -160,7 +160,7 @@ function loadVideo(event) {
 
 function formatTime(seconds) {
 
-    if (isNaN(seconds)) {
+    if (!seconds || isNaN(seconds)) {
 
         return "00:00:00:000";
 
