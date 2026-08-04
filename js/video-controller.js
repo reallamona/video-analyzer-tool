@@ -2,9 +2,17 @@
    Video Controller
 ========================= */
 
+
+/* =========================
+   Check YouTube
+========================= */
+
 function isYouTube() {
 
-    return player != null;
+    return (
+        typeof player !== "undefined" &&
+        player !== null
+    );
 
 }
 
@@ -49,7 +57,7 @@ function getDuration() {
 
     if (video) {
 
-        return video.duration;
+        return video.duration || 0;
 
     }
 
@@ -92,6 +100,17 @@ function seekVideo(time) {
 ========================= */
 
 function moveByFrames(frames) {
+
+    if (!fps) {
+
+        console.log(
+            "FPS is not set"
+        );
+
+        return;
+
+    }
+
 
     const seconds =
         frames / fps;
