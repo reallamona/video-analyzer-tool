@@ -4,21 +4,20 @@
 
 function initializeRemoveVideo() {
 
-    const removeVideoBtn = document.getElementById(
-        "removeVideoBtn"
-    );
+    const removeVideoBtn =
+        document.getElementById(
+            "removeVideoBtn"
+        );
 
-    const video = document.getElementById(
-        "video"
-    );
+    const videoUpload =
+        document.getElementById(
+            "videoUpload"
+        );
 
-    const videoUpload = document.getElementById(
-        "videoUpload"
-    );
-
-    const youtubePlayer = document.getElementById(
-        "youtubePlayer"
-    );
+    const youtubePlayer =
+        document.getElementById(
+            "youtubePlayer"
+        );
 
 
     if (!removeVideoBtn) {
@@ -28,113 +27,97 @@ function initializeRemoveVideo() {
         );
 
         return;
+
     }
 
 
-    removeVideoBtn.addEventListener("click", () => {
+    removeVideoBtn.addEventListener(
+        "click",
+        () => {
 
 
-        /*
-            Remove Local Video
-        */
+            // Remove YouTube player
+            if (typeof player !== "undefined" && player) {
 
-        if (video) {
+                player.destroy();
 
-            video.pause();
+                player = null;
 
-            video.removeAttribute("src");
-
-            video.load();
-
-            video.style.display = "none";
-
-        }
+            }
 
 
-        /*
-            Remove YouTube Video
-        */
+            // Remove local video
+            if (typeof video !== "undefined" && video) {
 
-        if (youtubePlayer) {
+                video.pause();
 
-            youtubePlayer.innerHTML = "";
+                video.removeAttribute(
+                    "src"
+                );
 
-            youtubePlayer.style.display = "none";
+                video.load();
 
-        }
-
-
-        /*
-            Reset Upload Input
-        */
-
-        if (videoUpload) {
-
-            videoUpload.value = "";
-
-        }
+            }
 
 
-        /*
-            Reset Player State
-        */
+            // Clear upload input
+            if (videoUpload) {
 
-        window.currentVideo = null;
+                videoUpload.value = "";
 
-        window.currentVideoFile = null;
-
-        window.currentYoutubeVideo = null;
+            }
 
 
-        /*
-            Reset Timeline
-        */
+            // Clear YouTube container
+            if (youtubePlayer) {
 
-        const timeline = document.getElementById(
-            "timeline"
-        );
+                youtubePlayer.innerHTML = "";
 
-        if (timeline) {
-
-            timeline.value = 0;
-
-        }
+            }
 
 
-        /*
-            Reset Time Display
-        */
-
-        const videoTime = document.getElementById(
-            "videoTime"
-        );
-
-        if (videoTime) {
-
-            videoTime.textContent = "00:00";
-
-        }
+            // Reset video display
+            const container =
+                document.querySelector(
+                    ".video-container"
+                );
 
 
-        /*
-            Reset Title / Filename
-        */
+            if (container) {
 
-        const videoTitle = document.getElementById(
-            "videoTitle"
-        );
+                container.innerHTML = `
 
-        if (videoTitle) {
+                    <div class="video-placeholder">
+                        No video loaded
+                    </div>
 
-            videoTitle.textContent = "No video loaded";
+                `;
+
+            }
+
+
+            // Reset time
+            if (currentTimeText) {
+
+                currentTimeText.textContent =
+                    "00:00:00:000";
+
+            }
+
+
+            if (durationText) {
+
+                durationText.textContent =
+                    "00:00:00:000";
+
+            }
+
+
+            console.log(
+                "Video removed"
+            );
 
         }
-
-
-        console.log(
-            "Video removed"
-        );
-
-    });
+    );
 
 }
