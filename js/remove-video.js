@@ -33,24 +33,55 @@ function initializeRemoveVideo() {
 
     removeVideoBtn.addEventListener("click", () => {
 
-        video.pause();
 
-        video.src = "";
+        // Stop video
+        if (video) {
 
-        video.load();
+            video.pause();
+
+            video.removeAttribute("src");
+
+            video.load();
+
+        }
 
 
+        // Clear uploaded file
         if (videoUpload) {
+
             videoUpload.value = "";
+
         }
 
 
+        // Remove YouTube content
         if (youtubePlayer) {
+
             youtubePlayer.innerHTML = "";
+
         }
 
 
-        console.log("Video removed");
+        // Reset global video state
+        window.currentVideo = null;
+        window.currentVideoFile = null;
+
+
+        // Reset timeline if it exists
+        const timeline = document.getElementById(
+            "timeline"
+        );
+
+        if (timeline) {
+
+            timeline.value = 0;
+
+        }
+
+
+        console.log(
+            "Video removed"
+        );
 
     });
 
