@@ -34,7 +34,10 @@ function initializeRemoveVideo() {
     removeVideoBtn.addEventListener("click", () => {
 
 
-        // Remove local video
+        /*
+            Remove Local Video
+        */
+
         if (video) {
 
             video.pause();
@@ -48,15 +51,10 @@ function initializeRemoveVideo() {
         }
 
 
-        // Clear uploaded file input
-        if (videoUpload) {
+        /*
+            Remove YouTube Video
+        */
 
-            videoUpload.value = "";
-
-        }
-
-
-        // Remove YouTube video
         if (youtubePlayer) {
 
             youtubePlayer.innerHTML = "";
@@ -66,12 +64,32 @@ function initializeRemoveVideo() {
         }
 
 
-        // Reset video data
+        /*
+            Reset Upload Input
+        */
+
+        if (videoUpload) {
+
+            videoUpload.value = "";
+
+        }
+
+
+        /*
+            Reset Player State
+        */
+
         window.currentVideo = null;
+
         window.currentVideoFile = null;
 
+        window.currentYoutubeVideo = null;
 
-        // Reset timeline
+
+        /*
+            Reset Timeline
+        */
+
         const timeline = document.getElementById(
             "timeline"
         );
@@ -83,7 +101,10 @@ function initializeRemoveVideo() {
         }
 
 
-        // Reset time display
+        /*
+            Reset Time Display
+        */
+
         const videoTime = document.getElementById(
             "videoTime"
         );
@@ -91,6 +112,21 @@ function initializeRemoveVideo() {
         if (videoTime) {
 
             videoTime.textContent = "00:00";
+
+        }
+
+
+        /*
+            Reset Title / Filename
+        */
+
+        const videoTitle = document.getElementById(
+            "videoTitle"
+        );
+
+        if (videoTitle) {
+
+            videoTitle.textContent = "No video loaded";
 
         }
 
