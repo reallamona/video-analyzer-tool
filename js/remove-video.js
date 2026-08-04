@@ -34,7 +34,7 @@ function initializeRemoveVideo() {
     removeVideoBtn.addEventListener("click", () => {
 
 
-        // Stop video
+        // Remove local video
         if (video) {
 
             video.pause();
@@ -43,10 +43,12 @@ function initializeRemoveVideo() {
 
             video.load();
 
+            video.style.display = "none";
+
         }
 
 
-        // Clear uploaded file
+        // Clear uploaded file input
         if (videoUpload) {
 
             videoUpload.value = "";
@@ -54,20 +56,22 @@ function initializeRemoveVideo() {
         }
 
 
-        // Remove YouTube content
+        // Remove YouTube video
         if (youtubePlayer) {
 
             youtubePlayer.innerHTML = "";
 
+            youtubePlayer.style.display = "none";
+
         }
 
 
-        // Reset global video state
+        // Reset video data
         window.currentVideo = null;
         window.currentVideoFile = null;
 
 
-        // Reset timeline if it exists
+        // Reset timeline
         const timeline = document.getElementById(
             "timeline"
         );
@@ -75,6 +79,18 @@ function initializeRemoveVideo() {
         if (timeline) {
 
             timeline.value = 0;
+
+        }
+
+
+        // Reset time display
+        const videoTime = document.getElementById(
+            "videoTime"
+        );
+
+        if (videoTime) {
+
+            videoTime.textContent = "00:00";
 
         }
 
