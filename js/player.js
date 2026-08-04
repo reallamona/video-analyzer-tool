@@ -7,6 +7,8 @@ let videoUpload;
 let currentTimeText;
 let durationText;
 
+let localVideoURL = null;
+
 
 /* =========================
    Initialize Player
@@ -27,18 +29,42 @@ function initializePlayer() {
         document.getElementById("duration");
 
 
-    videoUpload.addEventListener(
-        "change",
-        loadVideo
-    );
+    if (videoUpload) {
+
+        videoUpload.addEventListener(
+            "change",
+            loadVideo
+        );
+
+    }
+
+
+    if (video) {
+
+        addVideoListeners();
+
+    }
+
+}
+
+
+/* =========================
+   Add Video Events
+========================= */
+
+function addVideoListeners() {
 
 
     video.addEventListener(
         "loadedmetadata",
         () => {
 
-            durationText.textContent =
-                formatTime(video.duration);
+            if (durationText) {
+
+                durationText.textContent =
+                    formatTime(video.duration);
+
+            }
 
         }
     );
@@ -48,8 +74,12 @@ function initializePlayer() {
         "timeupdate",
         () => {
 
-            currentTimeText.textContent =
-                formatTime(video.currentTime);
+            if (currentTimeText) {
+
+                currentTimeText.textContent =
+                    formatTime(video.currentTime);
+
+            }
 
         }
     );
@@ -70,59 +100,58 @@ function loadVideo(event) {
     if (!file) return;
 
 
-   if (typeof player !== "undefined" && player) {
+    // Remove YouTube
 
-    player.destroy();
+    if (typeof player !== "undefined" && player) {
 
-    player = null;
-   
-   }
+        player.destroy();
+
+        player = null;
+
+    }
 
 
-    const container =
-        document.querySelector(
-            ".video-container"
+    const youtubePlayer =
+        document.getElementById(
+            "youtubePlayer"
         );
 
 
-    container.innerHTML = `
+    if (youtubePlayer) {
 
-        <video
-            id="video"
-            controls>
-        </video>
+        youtubePlayer.innerHTML = "";
 
-    `;
+        youtubePlayer.style.display =
+            "none";
 
-
-    video =
-        document.getElementById("video");
+    }
 
 
-    video.src =
+    // Release previous file memory
+
+    if (localVideoURL) {
+
+        URL.revokeObjectURL(
+            localVideoURL
+        );
+
+    }
+
+
+    localVideoURL =
         URL.createObjectURL(file);
 
 
-    video.addEventListener(
-        "loadedmetadata",
-        () => {
-
-            durationText.textContent =
-                formatTime(video.duration);
-
-        }
-    );
+    video.style.display =
+        "block";
 
 
-    video.addEventListener(
-        "timeupdate",
-        () => {
+    video.src =
+        localVideoURL;
 
-            currentTimeText.textContent =
-                formatTime(video.currentTime);
 
-        }
-    );
+    video.load();
+
 
 }
 
