@@ -36,8 +36,11 @@ function initializeRemoveVideo() {
         () => {
 
 
-            // Remove YouTube player
-            if (typeof player !== "undefined" && player) {
+            /*
+                Remove YouTube
+            */
+
+            if (player) {
 
                 player.destroy();
 
@@ -46,8 +49,21 @@ function initializeRemoveVideo() {
             }
 
 
-            // Remove local video
-            if (typeof video !== "undefined" && video) {
+            if (youtubePlayer) {
+
+                youtubePlayer.innerHTML = "";
+
+                youtubePlayer.style.display =
+                    "none";
+
+            }
+
+
+            /*
+                Remove Local Video
+            */
+
+            if (video) {
 
                 video.pause();
 
@@ -57,10 +73,16 @@ function initializeRemoveVideo() {
 
                 video.load();
 
+                video.style.display =
+                    "block";
+
             }
 
 
-            // Clear upload input
+            /*
+                Reset Upload
+            */
+
             if (videoUpload) {
 
                 videoUpload.value = "";
@@ -68,35 +90,10 @@ function initializeRemoveVideo() {
             }
 
 
-            // Clear YouTube container
-            if (youtubePlayer) {
+            /*
+                Reset UI
+            */
 
-                youtubePlayer.innerHTML = "";
-
-            }
-
-
-            // Reset video display
-            const container =
-                document.querySelector(
-                    ".video-container"
-                );
-
-
-            if (container) {
-
-                container.innerHTML = `
-
-                    <div class="video-placeholder">
-                        No video loaded
-                    </div>
-
-                `;
-
-            }
-
-
-            // Reset time
             if (currentTimeText) {
 
                 currentTimeText.textContent =
@@ -109,6 +106,17 @@ function initializeRemoveVideo() {
 
                 durationText.textContent =
                     "00:00:00:000";
+
+            }
+
+
+            /*
+                Clear URL field
+            */
+
+            if (videoURL) {
+
+                videoURL.value = "";
 
             }
 
