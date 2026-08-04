@@ -70,21 +70,19 @@ function addVideoListeners() {
 );
 
 
-    video.addEventListener(
-        "timeupdate",
-        () => {
+   video.addEventListener(
+    "timeupdate",
+    () => {
 
-            if (currentTimeText) {
+        if (currentTimeText) {
 
-                currentTimeText.textContent =
-                    formatTime(video.currentTime);
-
-            }
+            currentTimeText.textContent =
+                formatTime(video.currentTime);
 
         }
-    );
 
-}
+    }
+);
 
 
 /* =========================
