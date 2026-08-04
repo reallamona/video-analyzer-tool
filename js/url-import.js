@@ -175,7 +175,11 @@ function youtubeReady() {
     );
 
 
-    updateYouTubeDuration();
+    setTimeout(
+    updateYouTubeDuration,
+    500
+    
+    );
 
 
     if (youtubeTimeInterval) {
