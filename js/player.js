@@ -56,18 +56,18 @@ function addVideoListeners() {
 
 
     video.addEventListener(
-        "loadedmetadata",
-        () => {
+    "loadedmetadata",
+    () => {
 
-            if (durationText) {
+        if (durationText) {
 
-                durationText.textContent =
-                    formatTime(video.duration);
-
-            }
+            durationText.textContent =
+                formatTime(video.duration);
 
         }
-    );
+
+    }
+);
 
 
     video.addEventListener(
