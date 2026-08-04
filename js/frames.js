@@ -206,11 +206,19 @@ function updateFrameNumber() {
         );
 
 
-    frameNumberText.textContent =
-        frame;
+    if (frameNumberText) {
+
+        frameNumberText.textContent =
+            frame;
+
+    }
 
 
-    fpsDisplay.textContent =
-        fps;
+    if (fpsDisplay) {
+
+        fpsDisplay.textContent =
+            fps;
+
+    }
 
 }
