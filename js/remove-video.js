@@ -9,10 +9,12 @@ function initializeRemoveVideo() {
             "removeVideoBtn"
         );
 
+
     const videoUpload =
         document.getElementById(
             "videoUpload"
         );
+
 
     const youtubePlayer =
         document.getElementById(
@@ -36,9 +38,7 @@ function initializeRemoveVideo() {
         () => {
 
 
-            /*
-                Remove YouTube
-            */
+            // Remove YouTube
 
             if (player) {
 
@@ -59,16 +59,7 @@ function initializeRemoveVideo() {
             }
 
 
-           if (video) {
-              
-              video.style.display = "block";
-           
-           }
-           
-
-            /*
-                Remove Local Video
-            */
+            // Remove local video
 
             if (video) {
 
@@ -86,9 +77,7 @@ function initializeRemoveVideo() {
             }
 
 
-            /*
-                Reset Upload
-            */
+            // Reset upload input
 
             if (videoUpload) {
 
@@ -97,14 +86,12 @@ function initializeRemoveVideo() {
             }
 
 
-            /*
-                Reset UI
-            */
+            // Reset time display
 
             if (currentTimeText) {
 
                 currentTimeText.textContent =
-                    "00:00:00:000";
+                    "00:00:00.000";
 
             }
 
@@ -112,18 +99,7 @@ function initializeRemoveVideo() {
             if (durationText) {
 
                 durationText.textContent =
-                    "00:00:00:000";
-
-            }
-
-
-            /*
-                Clear URL field
-            */
-
-            if (videoURL) {
-
-                videoURL.value = "";
+                    "00:00:00.000";
 
             }
 
