@@ -1,3 +1,5 @@
-# Customized Video Reviewer
+# Video Reviewer Tool
 
-This tool is primarily used for personal research. Feel free to use it; it's safe and reliable.
+This tool is primarily used for personal research as it was customized to my preference. 
+
+Feel free to use it; it's safe and reliable.
