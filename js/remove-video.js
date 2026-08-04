@@ -59,6 +59,13 @@ function initializeRemoveVideo() {
             }
 
 
+           if (video) {
+              
+              video.style.display = "block";
+           
+           }
+           
+
             /*
                 Remove Local Video
             */
