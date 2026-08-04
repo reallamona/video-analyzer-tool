@@ -70,13 +70,13 @@ function loadVideo(event) {
     if (!file) return;
 
 
-    if (player) {
+   if (typeof player !== "undefined" && player) {
 
-        player.destroy();
+    player.destroy();
 
-        player = null;
-
-    }
+    player = null;
+   
+   }
 
 
     const container =
